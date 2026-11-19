@@ -1,0 +1,98 @@
+[
+  {
+    "id": "hook",
+    "start": 0,
+    "duration": 6,
+    "image": "assets/screens/03-overview.png",
+    "title": "项目越来越大，该从哪里改？",
+    "caption": "从一个能力，找到它真正的实现"
+  },
+  {
+    "id": "import",
+    "start": 6,
+    "duration": 8,
+    "image": "assets/screens/02-imported.png",
+    "title": "导入你的项目",
+    "caption": "ZIP 或文件夹，在浏览器本地解析"
+  },
+  {
+    "id": "overview",
+    "start": 14,
+    "duration": 7,
+    "image": "assets/screens/03-overview.png",
+    "title": "项目有什么，一张地图看清",
+    "caption": "Skill · Agent · 工具 · MCP · 模块 · 配置"
+  },
+  {
+    "id": "skill",
+    "start": 21,
+    "duration": 6,
+    "image": "assets/screens/04-skill.png",
+    "title": "从一个 Skill 开始",
+    "caption": "选择 discover-jobs，查看原始描述"
+  },
+  {
+    "id": "relations",
+    "start": 27,
+    "duration": 7,
+    "image": "assets/screens/05-relations.png",
+    "title": "顺着关系找到工具",
+    "caption": "查看 discover-jobs 与 search_jobs 的连接"
+  },
+  {
+    "id": "evidence",
+    "start": 34,
+    "duration": 8,
+    "image": "assets/screens/06-evidence.png",
+    "title": "每条关系，都能回到出处",
+    "caption": "正文提及有来源，不冒充运行轨迹"
+  },
+  {
+    "id": "search",
+    "start": 42,
+    "duration": 6,
+    "image": "assets/screens/07-search.png",
+    "title": "知道名字，直接搜索",
+    "caption": "按对象类型、名称、描述或路径定位"
+  },
+  {
+    "id": "tool",
+    "start": 48,
+    "duration": 6,
+    "image": "assets/screens/08-tool.png",
+    "title": "工具的描述，来自工具本身",
+    "caption": "保留原文，不等待模型总结"
+  },
+  {
+    "id": "source",
+    "start": 54,
+    "duration": 9,
+    "image": "assets/screens/09-source.png",
+    "title": "找到要改的那一行",
+    "caption": "src/server.py:8 · 复制相对路径与行号"
+  },
+  {
+    "id": "mcp",
+    "start": 63,
+    "duration": 7,
+    "image": "assets/screens/10-mcp.png",
+    "title": "服务与配置，也有位置",
+    "caption": "只发现声明，不连接或启动 MCP"
+  },
+  {
+    "id": "reimport",
+    "start": 70,
+    "duration": 6,
+    "image": "assets/screens/12-after-reimport.png",
+    "title": "改完代码，重新导入",
+    "caption": "当前版本只读；在编辑器继续开发"
+  },
+  {
+    "id": "end",
+    "start": 76,
+    "duration": 8,
+    "image": "assets/screens/03-overview.png",
+    "title": "Project Map",
+    "caption": "github.com/WItaZhang/project-map"
+  }
+]

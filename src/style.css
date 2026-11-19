@@ -319,7 +319,8 @@ svg { display: block; }
   .top-actions .btn .icon { width: 12px; height: 12px; }
   .brand-subtitle { letter-spacing: .3px; }
   .canvas-topbar { gap: 5px; padding: 0 7px; }
-  .canvas-topbar .breadcrumb { display: none; }
+  .canvas-topbar .breadcrumb { display: flex; flex: 0 0 auto; min-width: 32px; max-width: 36px; }
+  .canvas-topbar .breadcrumb-label { display: none; }
   .canvas-topbar .view-tabs { margin-left: 1px; }
   .canvas-actions { margin-left: auto; }
   .view-tabs button { padding: 4px 8px; }

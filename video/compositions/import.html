@@ -1,0 +1,19 @@
+<template>
+<style>
+#root{position:absolute;inset:0;background:#f6f8fc;overflow:hidden}
+#import-viewport{position:absolute;inset:0 0 auto;height:820px;overflow:hidden;background:#f6f8fc}
+#import-camera{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0}
+#import-camera img,#import-camera video{position:absolute;left:0;top:0;width:1920px;height:1080px;object-fit:fill}
+#import-still{z-index:1}#import-recording{z-index:3}#import-before{z-index:4}
+</style>
+<div id="root" data-composition-id="import" data-width="1920" data-height="1080">
+<div id="import-viewport" data-layout-allow-overflow="true"><div id="import-camera">
+<img id="import-still" class="clip" data-start="0" data-duration="8" data-track-index="0" src="assets/screens/02-imported.png" alt="Actual synthetic Career Agent product state" /><video id="import-recording" class="clip" data-start="1.6" data-duration="3.476" data-track-index="1" src="assets/clips/import.mp4" muted playsinline preload="auto"></video><img id="import-before" class="clip" data-start="0" data-duration="1.6" data-track-index="1" src="assets/screens/01-welcome.png" alt="Actual project import screen" />
+</div></div>
+</div>
+<script>
+const tl=gsap.timeline({paused:true});
+tl.set('#import-camera',{"x":230.4,"y":0,"scale":0.7592592592592593},0);
+window.__timelines['import']=tl;
+</script>
+</template>

@@ -2,15 +2,27 @@
 
 **用一张可操作的地图，理解 Agent 项目的能力与实现。**
 
-[在线体验](https://witazhang.github.io/project-map/) · [English](README.md) · [演示指南](docs/demo.md) · [参与贡献](CONTRIBUTING.md) · [MIT 许可证](LICENSE)
+[在线体验](https://witazhang.github.io/project-map/) · [观看视频](https://github.com/WItaZhang/project-map/releases/download/v0.1.0/project-map-walkthrough-zh.mp4) · [English](README.md) · [演示指南](docs/demo.md) · [参与贡献](CONTRIBUTING.md) · [MIT 许可证](LICENSE)
 
 Skill、Agent、工具、MCP 配置和实现代码往往散落在仓库各处。Project Map 把它们放到同一张画布上，让你从产品能力出发找到源文件，并核对每条关系的依据。
 
 导入项目文件夹或 ZIP，即可在浏览器本地解析。**零 LLM 调用，无需 API key。** 名称和描述来自源码元数据、docstring 与静态字符串。
 
-![Project Map: a concept illustration of capabilities connected to source](docs/assets/project-map-hero.svg)
+![Project Map 实际界面：在交互画布中查看合成 Career Agent 项目](docs/assets/project-map-overview.png)
 
 **当前状态：**早期只读浏览工具，界面为中文。内置项目是合成示例。
+
+## 观看完整演示
+
+从导入项目 ZIP 开始，查看项目地图，沿着 `discover-jobs` 找到 `search_jobs` 的关系依据，再打开工具的实现源码。视频使用合成示例的真实应用录屏，配有中文屏幕文字和音乐，无旁白。
+
+[![Project Map 操作演示动图](docs/assets/project-map-demo.gif)](https://github.com/WItaZhang/project-map/releases/download/v0.1.0/project-map-walkthrough-zh.mp4)
+
+[观看或下载完整视频（MP4）](https://github.com/WItaZhang/project-map/releases/download/v0.1.0/project-map-walkthrough-zh.mp4) · [跟随操作指南](docs/demo.md) · [可编辑视频工程](video/README.md)
+
+## 在线体验
+
+[打开 Project Map](https://witazhang.github.io/project-map/)，点击「**打开示例**」即可体验。导入的项目源码留在你的浏览器中。
 
 ## 本地体验
 
@@ -36,7 +48,6 @@ npm run dev
 3. **定位实现。** 选择 `search_jobs` 工具节点，进入「**源码**」，查看 `src/server.py` 中高亮的定义位置。复制相对 `路径:行号`，即可在自己的编辑器中定位。
 4. **浏览周边结构。** 按名称、原始描述或路径搜索，用类型筛选缩小范围，在「**全览**」和「**聚焦**」之间切换。画布支持平移、缩放、拖动节点和适应视图。
 5. **在编辑器中修改，再重新导入。** 地图反映导入时的文件快照，不会写入源码或监听文件系统。
-
 
 ## 能识别什么
 

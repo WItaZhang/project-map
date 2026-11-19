@@ -1,0 +1,34 @@
+<template>
+<style>
+@font-face{font-family:'Project Map Video';src:url('assets/fonts/ProjectMapVideo.woff2') format('woff2');font-weight:100 900;font-display:block}
+#root{position:absolute;inset:0;pointer-events:none}
+.band{position:absolute;left:0;right:0;top:820px;height:260px;background:#f6f8fc;border-top:1px solid #dce4f0}
+.copy{position:absolute;left:192px;right:192px;top:832px;height:170px;font-family:'Project Map Video',sans-serif;color:#263957}
+h1{margin:0;font-size:64px;line-height:1.2;font-weight:700;letter-spacing:-1px}
+p{margin:10px 0 0;font-size:44px;line-height:1.2;font-weight:400;color:#566c8b}
+</style><div id="root" data-composition-id="captions" data-width="1920" data-height="1080"><div class="band"></div><div id="copy-hook" class="clip copy" data-start="0" data-duration="6" data-track-index="0" data-hold="true"><div id="copy-hook-inner"><h1 data-var-text="hook-title">项目越来越大，该从哪里改？</h1><p data-var-text="hook-caption">从一个能力，找到它真正的实现</p></div></div>
+<div id="copy-import" class="clip copy" data-start="6" data-duration="8" data-track-index="0" data-hold="true"><div id="copy-import-inner"><h1 data-var-text="import-title">导入你的项目</h1><p data-var-text="import-caption">ZIP 或文件夹，在浏览器本地解析</p></div></div>
+<div id="copy-overview" class="clip copy" data-start="14" data-duration="7" data-track-index="0" data-hold="true"><div id="copy-overview-inner"><h1 data-var-text="overview-title">项目有什么，一张地图看清</h1><p data-var-text="overview-caption">Skill · Agent · 工具 · MCP · 模块 · 配置</p></div></div>
+<div id="copy-skill" class="clip copy" data-start="21" data-duration="6" data-track-index="0" data-hold="true"><div id="copy-skill-inner"><h1 data-var-text="skill-title">从一个 Skill 开始</h1><p data-var-text="skill-caption">选择 discover-jobs，查看原始描述</p></div></div>
+<div id="copy-relations" class="clip copy" data-start="27" data-duration="7" data-track-index="0" data-hold="true"><div id="copy-relations-inner"><h1 data-var-text="relations-title">顺着关系找到工具</h1><p data-var-text="relations-caption">查看 discover-jobs 与 search_jobs 的连接</p></div></div>
+<div id="copy-evidence" class="clip copy" data-start="34" data-duration="8" data-track-index="0" data-hold="true"><div id="copy-evidence-inner"><h1 data-var-text="evidence-title">每条关系，都能回到出处</h1><p data-var-text="evidence-caption">正文提及有来源，不冒充运行轨迹</p></div></div>
+<div id="copy-search" class="clip copy" data-start="42" data-duration="6" data-track-index="0" data-hold="true"><div id="copy-search-inner"><h1 data-var-text="search-title">知道名字，直接搜索</h1><p data-var-text="search-caption">按对象类型、名称、描述或路径定位</p></div></div>
+<div id="copy-tool" class="clip copy" data-start="48" data-duration="6" data-track-index="0" data-hold="true"><div id="copy-tool-inner"><h1 data-var-text="tool-title">工具的描述，来自工具本身</h1><p data-var-text="tool-caption">保留原文，不等待模型总结</p></div></div>
+<div id="copy-source" class="clip copy" data-start="54" data-duration="9" data-track-index="0" data-hold="true"><div id="copy-source-inner"><h1 data-var-text="source-title">找到要改的那一行</h1><p data-var-text="source-caption">src/server.py:8 · 复制相对路径与行号</p></div></div>
+<div id="copy-mcp" class="clip copy" data-start="63" data-duration="7" data-track-index="0" data-hold="true"><div id="copy-mcp-inner"><h1 data-var-text="mcp-title">服务与配置，也有位置</h1><p data-var-text="mcp-caption">只发现声明，不连接或启动 MCP</p></div></div>
+<div id="copy-reimport" class="clip copy" data-start="70" data-duration="6" data-track-index="0" data-hold="true"><div id="copy-reimport-inner"><h1 data-var-text="reimport-title">改完代码，重新导入</h1><p data-var-text="reimport-caption">当前版本只读；在编辑器继续开发</p></div></div>
+<div id="copy-end" class="clip copy" data-start="76" data-duration="8" data-track-index="0" data-hold="true"><div id="copy-end-inner"><h1 data-var-text="end-title">Project Map</h1><p data-var-text="end-caption">github.com/WItaZhang/project-map</p></div></div></div>
+<script>const tl=gsap.timeline({paused:true});tl.fromTo('#copy-hook-inner',{opacity:0},{opacity:1,duration:0.18,ease:'none'},0);
+tl.fromTo('#copy-import-inner',{opacity:0},{opacity:1,duration:0.18,ease:'none'},6);
+tl.fromTo('#copy-overview-inner',{opacity:0},{opacity:1,duration:0.18,ease:'none'},14);
+tl.fromTo('#copy-skill-inner',{opacity:0},{opacity:1,duration:0.18,ease:'none'},21);
+tl.fromTo('#copy-relations-inner',{opacity:0},{opacity:1,duration:0.18,ease:'none'},27);
+tl.fromTo('#copy-evidence-inner',{opacity:0},{opacity:1,duration:0.18,ease:'none'},34);
+tl.fromTo('#copy-search-inner',{opacity:0},{opacity:1,duration:0.18,ease:'none'},42);
+tl.fromTo('#copy-tool-inner',{opacity:0},{opacity:1,duration:0.18,ease:'none'},48);
+tl.fromTo('#copy-source-inner',{opacity:0},{opacity:1,duration:0.18,ease:'none'},54);
+tl.fromTo('#copy-mcp-inner',{opacity:0},{opacity:1,duration:0.18,ease:'none'},63);
+tl.fromTo('#copy-reimport-inner',{opacity:0},{opacity:1,duration:0.18,ease:'none'},70);
+tl.fromTo('#copy-end-inner',{opacity:0},{opacity:1,duration:0.18,ease:'none'},76);
+window.__timelines['captions']=tl;</script>
+</template>

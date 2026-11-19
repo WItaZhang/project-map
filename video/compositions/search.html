@@ -1,0 +1,20 @@
+<template>
+<style>
+#root{position:absolute;inset:0;background:#f6f8fc;overflow:hidden}
+#search-viewport{position:absolute;inset:0 0 auto;height:820px;overflow:hidden;background:#f6f8fc}
+#search-camera{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0}
+#search-camera img,#search-camera video{position:absolute;left:0;top:0;width:1920px;height:1080px;object-fit:fill}
+#search-still{z-index:1}#search-recording{z-index:3}#import-before{z-index:4}
+</style>
+<div id="root" data-composition-id="search" data-width="1920" data-height="1080">
+<div id="search-viewport" data-layout-allow-overflow="true"><div id="search-camera">
+<img id="search-still" class="clip" data-start="0" data-duration="6" data-track-index="0" src="assets/screens/07-search.png" alt="Actual synthetic Career Agent product state" /><video id="search-recording" class="clip" data-start="0" data-duration="4.073" data-track-index="1" src="assets/clips/search.mp4" muted playsinline preload="auto"></video>
+</div></div>
+</div>
+<script>
+const tl=gsap.timeline({paused:true});
+tl.set('#search-camera',{"x":230.4,"y":0,"scale":0.7592592592592593},0);
+tl.to('#search-camera',{...{"x":570,"y":-235,"scale":3},duration:0.6,ease:'power2.inOut'},4.193);
+window.__timelines['search']=tl;
+</script>
+</template>

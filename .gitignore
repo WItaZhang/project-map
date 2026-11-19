@@ -11,3 +11,8 @@ video/.cache/
 .venv*/
 __pycache__/
 video/.hyperframes-cache/
+video/assets/fonts/*.ttf
+video/assets/audio/music.wav
+video/.thumbnails/
+video/.transcode-cache/
+video/.waveform-cache/

@@ -1,0 +1,76 @@
+{
+  "provenance": "Actual Playwright interactions with the synthetic Career Agent, no application UI modifications.",
+  "viewport": "1920x1080",
+  "clips": [
+    {
+      "name": "import",
+      "start": 1.3581366670000001,
+      "end": 4.834631208999999,
+      "path": "assets/clips/import.mp4",
+      "duration": 3.4764945419999993
+    },
+    {
+      "name": "overview",
+      "start": 4.834638291999999,
+      "end": 9.064953041999999,
+      "path": "assets/clips/overview.mp4",
+      "duration": 4.23031475
+    },
+    {
+      "name": "skill",
+      "start": 9.064979417,
+      "end": 12.002307334,
+      "path": "assets/clips/skill.mp4",
+      "duration": 2.9373279169999993
+    },
+    {
+      "name": "relations",
+      "start": 12.002326708999998,
+      "end": 15.051358833999998,
+      "path": "assets/clips/relations.mp4",
+      "duration": 3.049032125
+    },
+    {
+      "name": "evidence",
+      "start": 15.051373292000001,
+      "end": 18.226577375,
+      "path": "assets/clips/evidence.mp4",
+      "duration": 3.1752040830000006
+    },
+    {
+      "name": "search",
+      "start": 18.226584667,
+      "end": 22.299783542,
+      "path": "assets/clips/search.mp4",
+      "duration": 4.073198874999999
+    },
+    {
+      "name": "tool",
+      "start": 22.299790959,
+      "end": 25.282527167,
+      "path": "assets/clips/tool.mp4",
+      "duration": 2.982736208000002
+    },
+    {
+      "name": "source",
+      "start": 25.282536042,
+      "end": 28.5336545,
+      "path": "assets/clips/source.mp4",
+      "duration": 3.2511184580000005
+    },
+    {
+      "name": "mcp",
+      "start": 28.533662417,
+      "end": 31.860320292,
+      "path": "assets/clips/mcp.mp4",
+      "duration": 3.326657875000002
+    },
+    {
+      "name": "reimport",
+      "start": 31.860337792,
+      "end": 36.366114209,
+      "path": "assets/clips/reimport.mp4",
+      "duration": 4.505776417000003
+    }
+  ]
+}

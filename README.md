@@ -2,15 +2,23 @@
 
 **A visual workspace for understanding agent projects.**
 
-[Live demo](https://witazhang.github.io/project-map/) · [简体中文](README.zh-CN.md) · [Demo walkthrough](docs/demo.md) · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
+[Live demo](https://witazhang.github.io/project-map/) · [Watch the video](https://github.com/WItaZhang/project-map/releases/download/v0.1.0/project-map-walkthrough-zh.mp4) · [简体中文](README.zh-CN.md) · [Walkthrough guide](docs/demo.md) · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
 
 Skills, agents, tools, MCP configuration, and implementation files often live in different parts of a repository. Project Map brings them onto one interactive canvas so you can follow a capability to its source and inspect the evidence behind each connection.
 
 Import a project folder or ZIP. Parsing runs locally in your browser, with **zero LLM calls and no API key**. Names and descriptions come from source metadata, docstrings, and static strings.
 
-![Project Map: a concept illustration of capabilities connected to source](docs/assets/project-map-hero.svg)
+![Project Map showing the synthetic Career Agent project on its interactive canvas](docs/assets/project-map-overview.png)
 
 **Status:** early-stage, read-only explorer. The current interface is in Chinese; this README describes its controls in English with their Chinese labels. The bundled example is synthetic.
+
+## Watch the walkthrough
+
+See a project ZIP become a map, follow `discover-jobs` to the evidence for `search_jobs`, and open the tool's implementation. The video uses real app recordings of the synthetic example, with Chinese on-screen text and music, without narration.
+
+[![Animated preview of the Project Map walkthrough](docs/assets/project-map-demo.gif)](https://github.com/WItaZhang/project-map/releases/download/v0.1.0/project-map-walkthrough-zh.mp4)
+
+[Watch or download the full video (MP4)](https://github.com/WItaZhang/project-map/releases/download/v0.1.0/project-map-walkthrough-zh.mp4) · [Follow along](docs/demo.md) · [Editable video project](video/README.md)
 
 ## Try it
 
@@ -40,7 +48,6 @@ A complete example using the included Career Agent:
 3. **Find the implementation.** Select the `search_jobs` node, then **Code / 源码**. Its definition in `src/server.py` is highlighted. Copy the relative `path:line` to locate it in your editor.
 4. **Explore the surrounding project.** Search names, descriptions, or paths; filter by object type; switch between **Overview / 全览** and **Focus / 聚焦**. Pan, zoom, drag nodes, or fit the canvas to the view.
 5. **Make changes in your editor, then reimport.** The map is a snapshot of the imported files. It does not edit source files or watch the filesystem.
-
 
 ## What it recognizes
 
