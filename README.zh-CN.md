@@ -2,7 +2,7 @@
 
 **用一张可操作的地图，理解 Agent 项目的能力与实现。**
 
-[English](README.md) · [演示指南](docs/demo.md) · [参与贡献](CONTRIBUTING.md) · [MIT 许可证](LICENSE)
+[在线体验](https://witazhang.github.io/project-map/) · [English](README.md) · [演示指南](docs/demo.md) · [参与贡献](CONTRIBUTING.md) · [MIT 许可证](LICENSE)
 
 Skill、Agent、工具、MCP 配置和实现代码往往散落在仓库各处。Project Map 把它们放到同一张画布上，让你从产品能力出发找到源文件，并核对每条关系的依据。
 

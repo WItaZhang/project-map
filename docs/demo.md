@@ -1,6 +1,6 @@
 # Project Map — product walkthrough
 
-[Download the synthetic example](../examples/career-agent-demo.zip) · [中文说明](../README.zh-CN.md)
+[Open the live app](https://witazhang.github.io/project-map/) · [Download the synthetic example](../examples/career-agent-demo.zip) · [中文说明](../README.zh-CN.md)
 
 Follow one synthetic Career Agent project from import to a source definition. The bundled example contains no private project data.
 

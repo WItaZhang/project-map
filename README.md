@@ -2,7 +2,7 @@
 
 **A visual workspace for understanding agent projects.**
 
-[简体中文](README.zh-CN.md) · [Demo walkthrough](docs/demo.md) · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
+[Live demo](https://witazhang.github.io/project-map/) · [简体中文](README.zh-CN.md) · [Demo walkthrough](docs/demo.md) · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
 
 Skills, agents, tools, MCP configuration, and implementation files often live in different parts of a repository. Project Map brings them onto one interactive canvas so you can follow a capability to its source and inspect the evidence behind each connection.
 
@@ -12,7 +12,11 @@ Import a project folder or ZIP. Parsing runs locally in your browser, with **zer
 
 **Status:** early-stage, read-only explorer. The current interface is in Chinese; this README describes its controls in English with their Chinese labels. The bundled example is synthetic.
 
-## Try it locally
+## Try it
+
+[Open Project Map](https://witazhang.github.io/project-map/) and choose **打开示例** to explore the included project immediately. Your imported source stays in your browser.
+
+### Run locally
 
 Development requires **Node.js 22.12 or newer** and npm. From this repository's directory:
 
