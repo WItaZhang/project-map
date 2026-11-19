@@ -4,6 +4,8 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/build-video.mjs",
+    "build:zh": "node scripts/build-video.mjs --lang zh",
+    "build:en": "node scripts/build-video.mjs --lang en",
     "capture": "node scripts/capture.mjs",
     "trim": "node scripts/trim-captures.mjs",
     "verify": "node scripts/verify-browser.mjs",
@@ -11,7 +13,12 @@
     "check": "npx --yes hyperframes@0.9.70 check",
     "review": "npx --yes hyperframes@0.9.70 snapshot --review --output output/review",
     "render": "npx --yes hyperframes@0.9.70 render --output output/project-map-walkthrough-zh.mp4 --fps 30 --quality delivery",
-    "teaser": "node scripts/create-teaser.mjs"
+    "render:zh": "npx --yes hyperframes@0.9.70 render --output output/project-map-walkthrough-zh.mp4 --fps 30 --quality delivery",
+    "render:en": "npx --yes hyperframes@0.9.70 render --output output/project-map-walkthrough-en.mp4 --fps 30 --quality delivery",
+    "teaser": "node scripts/create-teaser.mjs",
+    "teaser:zh": "node scripts/create-teaser.mjs --lang zh",
+    "teaser:en": "node scripts/create-teaser.mjs --lang en",
+    "capture:github": "node scripts/capture-github.mjs"
   },
   "devDependencies": {
     "ffmpeg-static": "^5.3.0",

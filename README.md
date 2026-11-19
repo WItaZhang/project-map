@@ -2,23 +2,28 @@
 
 **A visual workspace for understanding agent projects.**
 
-[Live demo](https://witazhang.github.io/project-map/) · [Watch the video](https://github.com/WItaZhang/project-map/releases/download/v0.1.0/project-map-walkthrough-zh.mp4) · [简体中文](README.zh-CN.md) · [Walkthrough guide](docs/demo.md) · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
+[Live demo](https://witazhang.github.io/project-map/) · [Watch the video](#watch-the-walkthrough) · [简体中文](README.zh-CN.md) · [Walkthrough guide](docs/demo.md) · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
 
 Skills, agents, tools, MCP configuration, and implementation files often live in different parts of a repository. Project Map brings them onto one interactive canvas so you can follow a capability to its source and inspect the evidence behind each connection.
 
 Connect a public GitHub repository, or import a project folder or ZIP. Parsing runs in your browser, with **zero LLM calls and no API key**. Names and descriptions come from source metadata, docstrings, and static strings.
 
-![Project Map showing the synthetic Career Agent project on its interactive canvas](docs/assets/project-map-overview.png)
-
 **Status:** early-stage, read-only explorer. The current interface is in Chinese; this README describes its controls in English with their Chinese labels. The bundled example is synthetic.
 
 ## Watch the walkthrough
 
-See a project ZIP become a map, follow `discover-jobs` to the evidence for `search_jobs`, and open the tool's implementation. The video uses real app recordings of the synthetic example, with Chinese on-screen text and music, without narration.
+**English · 96 seconds · 1080p.** Import a project, follow a Skill to its tool and source line, then connect directly to a GitHub repository. English titles and guidance accompany real recordings of the current Chinese interface, with music and no narration.
 
-[![Animated preview of the Project Map walkthrough](docs/assets/project-map-demo.gif)](https://github.com/WItaZhang/project-map/releases/download/v0.1.0/project-map-walkthrough-zh.mp4)
+https://github.com/user-attachments/assets/7801e032-a8e9-4176-af01-445ecaa39572
 
-[Watch or download the full video (MP4)](https://github.com/WItaZhang/project-map/releases/download/v0.1.0/project-map-walkthrough-zh.mp4) · [Follow along](docs/demo.md) · [Editable video project](video/README.md)
+[English MP4](https://github.com/WItaZhang/project-map/releases/download/v0.2.0/project-map-walkthrough-en.mp4) · [中文视频](README.zh-CN.md#观看完整演示) · [中文 MP4](https://github.com/WItaZhang/project-map/releases/download/v0.2.0/project-map-walkthrough-zh.mp4) · [Editable video project](video/README.md)
+
+<details>
+<summary>Short animated preview</summary>
+
+![English preview of the Project Map walkthrough](docs/assets/project-map-demo-en.gif)
+
+</details>
 
 ## Try it
 
@@ -29,7 +34,7 @@ See a project ZIP become a map, follow `discover-jobs` to the evidence for `sear
 1. Choose **Connect GitHub / 连接 GitHub 仓库** on the welcome screen, or **导入项目 → 连接 GitHub**.
 2. Paste `https://github.com/owner/repo` or `owner/repo`, then choose **Read repository / 读取仓库**.
 3. Select a branch and choose **Connect repository / 连接仓库**. The app reads the cloud file tree and supported source files directly from GitHub. You do not need to download a ZIP or clone the repository.
-4. Explore the map. The sidebar records the branch, commit, and fetch time. **View on GitHub / 在 GitHub 查看** opens the relevant source line at that same commit.
+4. Explore the map. The sidebar records the branch and commit. **View on GitHub / 在 GitHub 查看** opens the relevant source line at that same commit.
 5. After pushing changes to GitHub, choose **Refresh from GitHub / 从 GitHub 刷新** to read the branch again.
 
 GitHub remains the source of the project; analysis runs in your browser. Each load is a consistent commit snapshot. This connection currently supports public repositories without sign-in; it does not watch for changes, write commits, or create a cloud workspace.

@@ -1,0 +1,54 @@
+{
+  "hook": {
+    "title": "A growing project. Where do you start?",
+    "caption": "Trace a capability to its implementation."
+  },
+  "import": {
+    "title": "Import your project",
+    "caption": "ZIP or folder. Parsed locally in your browser."
+  },
+  "overview": {
+    "title": "See what's in your project",
+    "caption": "Skills · Agents · Tools · MCP · Modules · Config"
+  },
+  "skill": {
+    "title": "Start with a Skill",
+    "caption": "Select discover-jobs to read its original description."
+  },
+  "relations": {
+    "title": "Follow the link to a tool",
+    "caption": "Inspect the link from discover-jobs to search_jobs."
+  },
+  "evidence": {
+    "title": "Check where each link comes from",
+    "caption": "Text references include a source; they aren't runtime traces."
+  },
+  "search": {
+    "title": "Find a tool by name",
+    "caption": "Search names, descriptions, or paths. Filter by type."
+  },
+  "tool": {
+    "title": "Descriptions straight from source",
+    "caption": "Original metadata and docstrings. Zero LLM calls."
+  },
+  "source": {
+    "title": "Find the line to change",
+    "caption": "src/server.py:8 · Copy the relative path and line."
+  },
+  "mcp": {
+    "title": "Locate servers and configuration",
+    "caption": "Inspect declarations without connecting to MCP."
+  },
+  "reimport": {
+    "title": "Edit, then reimport",
+    "caption": "Make changes in your editor. The map is read-only."
+  },
+  "github": {
+    "title": "Connect directly to GitHub",
+    "caption": "Choose a branch. Read a commit. Refresh from GitHub."
+  },
+  "end": {
+    "title": "Project Map",
+    "caption": "github.com/WItaZhang/project-map"
+  }
+}

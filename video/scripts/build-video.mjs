@@ -1,11 +1,33 @@
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
-const shots=JSON.parse(await readFile('shots.json','utf8'));
+import { parseArgs } from 'node:util';
+
+const { values }=parseArgs({options:{lang:{type:'string',default:'zh'}}});
+const lang=values.lang==='zh-CN'?'zh':values.lang;
+if(!['zh','en'].includes(lang))throw new Error('Use --lang zh or --lang en.');
+const sourceShots=JSON.parse(await readFile('shots.json','utf8'));
+const englishCopy=JSON.parse(await readFile('copy.en.json','utf8'));
+const englishShots=sourceShots.map(s=>{
+ const copy=englishCopy[s.id];
+ if(!copy?.title||!copy?.caption)throw new Error(`Missing English copy for scene: ${s.id}`);
+ return {...s,...copy};
+});
+const shots=lang==='en'?englishShots:sourceShots;
+const duration=Math.max(...shots.map(s=>s.start+s.duration));
+const htmlLang=lang==='en'?'en':'zh-CN';
+const documentTitle=lang==='en'?'Project Map · From capability to source':'Project Map · 从能力找到实现';
+const srtTime=seconds=>{
+ const ms=Math.round(seconds*1000);
+ return `${String(Math.floor(ms/3600000)).padStart(2,'0')}:${String(Math.floor(ms/60000)%60).padStart(2,'0')}:${String(Math.floor(ms/1000)%60).padStart(2,'0')},${String(ms%1000).padStart(3,'0')}`;
+};
+const srt=items=>items.map((s,i)=>`${i+1}\n${srtTime(s.start)} --> ${srtTime(s.start+s.duration)}\n${s.title}\n${s.caption}\n`).join('\n');
+await writeFile('captions.zh-CN.srt',srt(sourceShots));
+await writeFile('captions.en.srt',srt(englishShots));
 const clips=JSON.parse(await readFile('assets/clips/manifest.json','utf8')).clips;
 const byName=new Map(clips.map(x=>[x.name,x]));
 const esc=s=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('"','&quot;');
 const full={x:230.4,y:0,scale:820/1080};
 const focus=(x,y,scale)=>({x:960-x*scale,y:410-y*scale,scale});
-const targets={hook:focus(905,530,1.32),import:full,overview:focus(900,555,1.18),skill:focus(1732,285,2.8),relations:focus(1735,302,3),evidence:focus(1735,310,3.2),search:focus(130,215,3),tool:focus(1735,350,2.8),source:focus(1725,245,2.8),mcp:focus(1735,315,2.8),reimport:full,end:full};
+const targets={hook:focus(905,530,1.32),import:full,overview:focus(900,555,1.18),skill:focus(1732,285,2.8),relations:focus(1735,302,3),evidence:focus(1735,310,3.2),search:focus(130,215,3),tool:focus(1735,350,2.8),source:focus(1725,245,2.8),mcp:focus(1735,315,2.8),reimport:full,github:focus(135,155,2.8),end:full};
 const titleVars=[];
 await mkdir('compositions',{recursive:true});
 for(const s of shots){
@@ -16,7 +38,9 @@ for(const s of shots){
  const pre=s.id==='import'?`<img id="import-before" class="clip" data-start="0" data-duration="1.6" data-track-index="1" src="assets/screens/01-welcome.png" alt="Actual project import screen" />`:'';
  let moves=`tl.set('#${s.id}-camera',${JSON.stringify(full)},0);`;
  const moveStart=clip?videoStart+clip.duration+0.12:0.8;
- if(s.id!=='reimport'&&s.id!=='import'&&s.id!=='end')moves+=`\ntl.to('#${s.id}-camera',{...${JSON.stringify(targets[s.id])},duration:0.6,ease:'power2.inOut'},${moveStart.toFixed(3)});`;
+ const target=targets[s.id]??full;
+ if(target!==full)moves+=`\ntl.to('#${s.id}-camera',{...${JSON.stringify(target)},duration:0.6,ease:'power2.inOut'},${moveStart.toFixed(3)});`;
+ if(s.id==='github')moves+=`\ntl.to('#github-camera',{...${JSON.stringify(focus(135,1005,2.8))},duration:0.65,ease:'power2.inOut'},9.1);`;
  if(s.id==='source')moves+=`\ntl.to('#source-camera',{...${JSON.stringify(focus(1735,465,3))},duration:0.65,ease:'power2.inOut'},5.25);`;
  if(s.id==='evidence')moves+=`\ntl.to('#evidence-camera',{...${JSON.stringify(focus(1735,615,3.2))},duration:0.65,ease:'power2.inOut'},6.15);`;
  if(s.id==='end')moves+=`\ntl.fromTo('#end-rule',{scaleX:0},{scaleX:1,duration:0.6,ease:'power2.out'},0.5);`;
@@ -56,12 +80,12 @@ p{margin:10px 0 0;font-size:44px;line-height:1.2;font-weight:400;color:#566c8b}
 <script>const tl=gsap.timeline({paused:true});${captionMoves}\nwindow.__timelines['captions']=tl;</script>
 </template>\n`);
 const hosts=shots.map(s=>`<div id="${s.id}" class="clip" data-composition-id="${s.id}" data-composition-src="compositions/${s.id}.html" data-start="${s.start}" data-duration="${s.duration}" data-track-index="0" data-track-kind="graphics" data-width="1920" data-height="1080"></div>`).join('\n');
-await writeFile('index.html',`<!doctype html><html lang="zh-CN" data-composition-variables='${JSON.stringify(titleVars).replaceAll("'",'&#39;')}'>
-<head><meta charset="UTF-8"><meta name="viewport" content="width=1920,height=1080"><title>Project Map · 从能力找到实现</title><script src="assets/lib/gsap.min.js"></script><style>*{box-sizing:border-box}html,body{margin:0;width:1920px;height:1080px;overflow:hidden;background:#f6f8fc}#root{position:absolute;inset:0}.clip{position:absolute;inset:0}</style></head>
-<body><div id="root" data-composition-id="main" data-start="0" data-duration="84" data-width="1920" data-height="1080" data-fps="30">
+await writeFile('index.html',`<!doctype html><html lang="${htmlLang}" data-composition-variables='${JSON.stringify(titleVars).replaceAll("'",'&#39;')}'>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=1920,height=1080"><title>${documentTitle}</title><script src="assets/lib/gsap.min.js"></script><style>*{box-sizing:border-box}html,body{margin:0;width:1920px;height:1080px;overflow:hidden;background:#f6f8fc}#root{position:absolute;inset:0}.clip{position:absolute;inset:0}</style></head>
+<body><div id="root" data-composition-id="main" data-start="0" data-duration="${duration}" data-width="1920" data-height="1080" data-fps="30">
 ${hosts}
-<div id="captions" class="clip" data-composition-id="captions" data-composition-src="compositions/captions.html" data-start="0" data-duration="84" data-track-index="1" data-track-kind="captions" data-width="1920" data-height="1080" style="z-index:30"></div>
-<audio id="music" src="assets/audio/music.m4a" data-start="0" data-duration="84" data-track-index="2" data-volume="0.85" data-fade-in="0.7" data-fade-out="2.5"></audio>
+<div id="captions" class="clip" data-composition-id="captions" data-composition-src="compositions/captions.html" data-start="0" data-duration="${duration}" data-track-index="1" data-track-kind="captions" data-width="1920" data-height="1080" style="z-index:30"></div>
+<audio id="music" src="assets/audio/music.m4a" data-start="0" data-duration="${duration}" data-track-index="2" data-volume="0.85" data-fade-in="0.7" data-fade-out="2.5"></audio>
 ${shots.filter(s=>byName.has(s.id)).map(s=>`<audio id="click-${s.id}" src="assets/audio/click-soft.wav" data-start="${s.start+(s.id==='import'?2.3:0.7)}" data-duration="0.08" data-track-index="3" data-volume="0.35"></audio>`).join('\n')}
 </div><script>window.__timelines=window.__timelines||{};window.__timelines.main=gsap.timeline({paused:true});</script></body></html>\n`);
-console.log('Wrote12scenes,captiontrack,and84srootcomposition.');
+console.log(`Built ${shots.length} scenes in ${htmlLang}, ${duration} seconds, and both subtitle sidecars.`);

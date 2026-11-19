@@ -2,23 +2,28 @@
 
 **用一张可操作的地图，理解 Agent 项目的能力与实现。**
 
-[在线体验](https://witazhang.github.io/project-map/) · [观看视频](https://github.com/WItaZhang/project-map/releases/download/v0.1.0/project-map-walkthrough-zh.mp4) · [English](README.md) · [演示指南](docs/demo.md) · [参与贡献](CONTRIBUTING.md) · [MIT 许可证](LICENSE)
+[在线体验](https://witazhang.github.io/project-map/) · [观看视频](#观看完整演示) · [English](README.md) · [演示指南](docs/demo.md) · [参与贡献](CONTRIBUTING.md) · [MIT 许可证](LICENSE)
 
 Skill、Agent、工具、MCP 配置和实现代码往往散落在仓库各处。Project Map 把它们放到同一张画布上，让你从产品能力出发找到源文件，并核对每条关系的依据。
 
 连接公开 GitHub 仓库，或导入项目文件夹与 ZIP，即可在浏览器中解析。**零 LLM 调用，无需 API key。** 名称和描述来自源码元数据、docstring 与静态字符串。
 
-![Project Map 实际界面：在交互画布中查看合成 Career Agent 项目](docs/assets/project-map-overview.png)
-
 **当前状态：**早期只读浏览工具，界面为中文。内置项目是合成示例。
 
 ## 观看完整演示
 
-从导入项目 ZIP 开始，查看项目地图，沿着 `discover-jobs` 找到 `search_jobs` 的关系依据，再打开工具的实现源码。视频使用合成示例的真实应用录屏，配有中文屏幕文字和音乐，无旁白。
+**中文版 · 96 秒 · 1080p。** 从导入项目、查看 Skill 和工具的关系、定位源码，到直接连接 GitHub 仓库，展示真实操作全流程。配有中文屏幕说明和音乐，无旁白。
 
-[![Project Map 操作演示动图](docs/assets/project-map-demo.gif)](https://github.com/WItaZhang/project-map/releases/download/v0.1.0/project-map-walkthrough-zh.mp4)
+https://github.com/user-attachments/assets/29cd2997-e29a-428d-8846-53f38b90006f
 
-[观看或下载完整视频（MP4）](https://github.com/WItaZhang/project-map/releases/download/v0.1.0/project-map-walkthrough-zh.mp4) · [跟随操作指南](docs/demo.md) · [可编辑视频工程](video/README.md)
+[下载中文 MP4](https://github.com/WItaZhang/project-map/releases/download/v0.2.0/project-map-walkthrough-zh.mp4) · [English video](README.md#watch-the-walkthrough) · [下载英文 MP4](https://github.com/WItaZhang/project-map/releases/download/v0.2.0/project-map-walkthrough-en.mp4) · [可编辑视频工程](video/README.md)
+
+<details>
+<summary>查看动图预览</summary>
+
+![Project Map 中文操作演示动图](docs/assets/project-map-demo.gif)
+
+</details>
 
 ## 在线体验
 
@@ -29,7 +34,7 @@ Skill、Agent、工具、MCP 配置和实现代码往往散落在仓库各处。
 1. 在欢迎页点击「**连接 GitHub 仓库**」，或选择「**导入项目 → 连接 GitHub**」。
 2. 粘贴 `https://github.com/owner/repo` 或 `owner/repo`，点击「**读取仓库**」。
 3. 选择分支，点击「**连接仓库**」。应用直接读取 GitHub 云端目录和支持的源文件，无需你先下载 ZIP 或克隆仓库。
-4. 在地图中探索项目。侧栏显示分支、commit 和读取时间；「**在 GitHub 查看**」会打开同一 commit 下的对应源码行。
+4. 在地图中探索项目。侧栏显示分支与 commit；「**在 GitHub 查看**」会打开同一 commit 下的对应源码行。
 5. 把代码修改推送到 GitHub 后，点击「**从 GitHub 刷新**」读取分支的最新状态。
 
 GitHub 是项目的数据来源，分析在浏览器中进行；每次读取都固定到同一个 commit。当前无需登录即可连接公开仓库，不会自动监听变化、写入提交或建立云端工作区。

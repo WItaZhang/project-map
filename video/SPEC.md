@@ -5,11 +5,11 @@ The film shows how a developer can trace a capability to the source line they sh
 | Property | Value |
 | --- | --- |
 | Format | MP4, 1920 × 1080, 30 fps |
-| Duration | 84 seconds; 2,520 frames |
+| Duration | 96 seconds; 2,880 frames |
 | Editing and rendering | Hyperframes 0.9.70; HTML compositions and GSAP |
-| Language | Chinese on-screen titles and guidance; no narration |
-| Sound | Original 100 BPM instrumental, 4/4, 35 bars; original interface clicks |
-| Product footage | Playwright recordings and screenshots of the synthetic fixture |
+| Language | Separate Chinese and English titles/guidance; Chinese app UI; no narration |
+| Sound | Original 100 BPM instrumental, 4/4, 40 bars; original interface clicks |
+| Product footage | Playwright recordings of the synthetic fixture and the public Project Map repository |
 
 ## Story and timing
 
@@ -28,7 +28,8 @@ The film shows how a developer can trace a capability to the source line they sh
 | 00:54–01:03 | Inspect the definition at `src/server.py:8` and the path-copy control |
 | 01:03–01:10 | Inspect MCP configuration, distinct from source server instances |
 | 01:10–01:16 | Reimport the project and explain the read-only workflow |
-| 01:16–01:24 | Hold the Project Map name and GitHub URL |
+| 01:16–01:28 | Connect to the real public GitHub repository, choose a branch, and show commit/refresh controls |
+| 01:28–01:36 | Hold the Project Map name and GitHub URL |
 
 ## Picture, motion, and sound
 
@@ -40,8 +41,8 @@ Music and clicks are locally synthesized original audio, with no sampled recordi
 
 ## Capture and review
 
-The capture workflow is [`scripts/capture.mjs`](scripts/capture.mjs) → [`scripts/trim-captures.mjs`](scripts/trim-captures.mjs) → [`scripts/build-video.mjs`](scripts/build-video.mjs). It uses a 1920 × 1080 browser viewport, 2× screenshots, and 1920 × 1080 video. Reproduction commands are in [README.md](README.md).
+The capture workflow is [`scripts/capture.mjs`](scripts/capture.mjs) → [`scripts/trim-captures.mjs`](scripts/trim-captures.mjs) → [`scripts/capture-github.mjs`](scripts/capture-github.mjs) → [`scripts/build-video.mjs`](scripts/build-video.mjs). It uses a 1920 × 1080 browser viewport, 2× screenshots, and 1920 × 1080 video. Reproduction commands are in [README.md](README.md).
 
-Only the synthetic fixture belongs in the recordings. Imported source is parsed locally by Project Map. Do not include personal projects, browser tabs, credentials, invented UI, runtime execution claims, or claims that the app edits source or connects to MCP.
+The recordings contain only the synthetic fixture and the already-public `WItaZhang/project-map` repository. Imported source is parsed locally by Project Map. Do not include personal projects, browser tabs, credentials, invented UI, runtime execution claims, or claims that the app edits source or connects to MCP.
 
 The recorded Hyperframes check reports **0 errors**. [REVIEW.md](REVIEW.md) records the review scope and warnings. After changes, rerun the check and inspect scene midpoints and both sides of transitions. Verify source labels, cropping, readable text, the final URL, matching state changes, duration, frame rate, and audio before replacing the release artifact.

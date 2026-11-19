@@ -1,28 +1,18 @@
 # Project Map — product walkthrough
 
-[Open the live app](https://witazhang.github.io/project-map/) · [Watch the full video](https://github.com/WItaZhang/project-map/releases/download/v0.1.0/project-map-walkthrough-zh.mp4) · [Download the synthetic example](../examples/career-agent-demo.zip) · [中文说明](../README.zh-CN.md)
+[Open the live app](https://witazhang.github.io/project-map/) · [Watch the full video](https://github.com/WItaZhang/project-map/releases/download/v0.2.0/project-map-walkthrough-zh.mp4) · [Download the synthetic example](../examples/career-agent-demo.zip) · [中文说明](../README.zh-CN.md)
 
 Follow one synthetic Career Agent project from import to a source definition. The bundled example contains no private project data.
 
 ## Watch the walkthrough
 
-The video shows the actual app: import a ZIP, navigate the map, inspect a Skill's relationship evidence, find a tool's source, and distinguish MCP configuration from server instances. It uses Chinese on-screen text and music, without narration.
+[English video](../README.md#watch-the-walkthrough) · [中文视频](../README.zh-CN.md#观看完整演示)
 
-[![Animated preview of the Project Map walkthrough](assets/project-map-demo.gif)](https://github.com/WItaZhang/project-map/releases/download/v0.1.0/project-map-walkthrough-zh.mp4)
+Both 96-second, 1080p editions show real app interactions: ZIP import, map navigation, relationship evidence, source lookup, and a direct public GitHub connection. The English edition has English guidance over the Chinese app interface. Both include original music, without narration.
 
-[Watch or download the full video (MP4)](https://github.com/WItaZhang/project-map/releases/download/v0.1.0/project-map-walkthrough-zh.mp4). To edit the scenes or render your own version, see the [video project](../video/README.md).
+[English MP4](https://github.com/WItaZhang/project-map/releases/download/v0.2.0/project-map-walkthrough-en.mp4) · [中文 MP4](https://github.com/WItaZhang/project-map/releases/download/v0.2.0/project-map-walkthrough-zh.mp4) · [Editable video project](../video/README.md)
 
 ![The synthetic Career Agent project in Project Map](assets/project-map-overview.png)
-
-## Connect a public GitHub project
-
-Open the [live app](https://witazhang.github.io/project-map/) and choose **连接 GitHub 仓库**, or **导入项目 → 连接 GitHub**. Paste a public repository URL such as `https://github.com/WItaZhang/project-map` (or `WItaZhang/project-map`), choose **读取仓库**, select a branch, and choose **连接仓库**.
-
-The app reads the repository directly from GitHub without a ZIP or local clone. The map records the branch, commit, and fetch time. Open a node's **源码** tab and choose **在 GitHub 查看** to inspect that exact commit and line on GitHub. After pushing a change, **从 GitHub 刷新** creates a new snapshot of the branch.
-
-Public access needs no sign-in or model key. Analysis still runs in the browser. GitHub's anonymous API quota applies, and the current connection does not support private repositories, automatic updates, or writing changes back.
-
-中文：点击「连接 GitHub 仓库」，粘贴公开仓库链接，读取仓库并选择分支，即可从云端生成地图。侧栏标明分支和 commit；「在 GitHub 查看」定位同一版本的源码行。推送修改后点「从 GitHub 刷新」，无需手动下载或重新上传项目。
 
 ## Follow along
 
@@ -43,7 +33,7 @@ Use the [live app](https://witazhang.github.io/project-map/), or run `npm ci` an
 
 围绕同一个合成求职 Agent 项目，从导入到源码定位的完整操作流程：
 
-[观看或下载完整视频](https://github.com/WItaZhang/project-map/releases/download/v0.1.0/project-map-walkthrough-zh.mp4)：真实应用录屏，中文屏幕文字，配乐，无旁白。需要调整画面或重新渲染时，查看[可编辑视频工程](../video/README.md)。
+[观看或下载完整视频](https://github.com/WItaZhang/project-map/releases/download/v0.2.0/project-map-walkthrough-zh.mp4)：真实应用录屏，中文屏幕文字，配乐，无旁白。需要调整画面或重新渲染时，查看[可编辑视频工程](../video/README.md)。
 
 1. 导入 `career-agent-demo.zip`，或者先点「打开示例」。
 2. 点「全部」和「全览」，查看六类对象；拖动、缩放画布。

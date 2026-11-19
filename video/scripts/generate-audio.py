@@ -2,7 +2,7 @@
 """Generate original deterministic Project Map music and UI clicks (stdlib only).
 
 No recordings, samples, speech, network, or third-party synthesis libraries.
-100 BPM, 4/4, 35 bars = 84 seconds. All waveforms are authored here.
+100 BPM, 4/4, 40 bars = 96 seconds. All waveforms are authored here.
 """
 from array import array
 from pathlib import Path
@@ -15,7 +15,7 @@ SR = 48_000
 BPM = 100
 BEAT = 60 / BPM
 BAR = 4 * BEAT
-BARS = 35
+BARS = 40
 DURATION = BARS * BAR
 N = round(SR * DURATION)
 OUT = Path(__file__).resolve().parents[1] / 'assets' / 'audio'
@@ -122,14 +122,14 @@ def make_music():
     rng = random.Random(SEED)
     left = array('f', [0]) * N
     right = array('f', [0]) * N
-    # Cmaj7, Am7, Fmaj7, G6, Dm7, Em7, Gsus2; five gentle seven-bar cycles.
+    # Cmaj7, Am7, Fmaj7, G6, Dm7, Em7, Gsus2; gentle seven-bar cycles.
     chords = [(48, 55, 59, 64), (45, 55, 60, 64), (41, 53, 57, 64),
               (43, 55, 59, 64), (45, 53, 57, 60), (47, 55, 59, 62),
               (43, 55, 57, 62)]
     for bar in range(BARS):
         chord = chords[bar % len(chords)]
         start = bar * BAR
-        intensity = .88 if bar < 4 or bar >= 31 else 1.0
+        intensity = .88 if bar < 4 or bar >= BARS - 4 else 1.0
         for k, midi in enumerate(chord):
             tone(left, right, start, BAR + .40, midi,
                  .085 * intensity, [-.5, .36, -.18, .52][k])
@@ -138,7 +138,7 @@ def make_music():
             midi = chord[(bar + k) % len(chord)] + (12 if k == 1 else 0)
             tone(left, right, start + beat * BEAT + .025, .82, midi,
                  .095 * intensity, (-.28 if k % 2 else .26), pluck=True)
-        if 2 <= bar < 33:
+        if 2 <= bar < BARS - 2:
             for beat in range(8):
                 percussion(left, right, start + beat * BEAT / 2,
                            .026 if beat % 2 else .020, rng)

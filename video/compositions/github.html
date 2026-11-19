@@ -1,0 +1,21 @@
+<template>
+<style>
+#root{position:absolute;inset:0;background:#f6f8fc;overflow:hidden}
+#github-viewport{position:absolute;inset:0 0 auto;height:820px;overflow:hidden;background:#f6f8fc}
+#github-camera{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0}
+#github-camera img,#github-camera video{position:absolute;left:0;top:0;width:1920px;height:1080px;object-fit:fill}
+#github-still{z-index:1}#github-recording{z-index:3}#import-before{z-index:4}
+</style>
+<div id="root" data-composition-id="github" data-width="1920" data-height="1080">
+<div id="github-viewport" data-layout-allow-overflow="true"><div id="github-camera">
+<img id="github-still" class="clip" data-start="0" data-duration="12" data-track-index="0" src="assets/screens/13-github.png" alt="Actual synthetic Career Agent product state" /><video id="github-recording" class="clip" data-start="0" data-duration="5.658" data-track-index="1" src="assets/clips/github.mp4" muted playsinline preload="auto"></video>
+</div></div>
+</div>
+<script>
+const tl=gsap.timeline({paused:true});
+tl.set('#github-camera',{"x":230.4,"y":0,"scale":0.7592592592592593},0);
+tl.to('#github-camera',{...{"x":582,"y":-24,"scale":2.8},duration:0.6,ease:'power2.inOut'},5.778);
+tl.to('#github-camera',{...{"x":582,"y":-2404,"scale":2.8},duration:0.65,ease:'power2.inOut'},9.1);
+window.__timelines['github']=tl;
+</script>
+</template>

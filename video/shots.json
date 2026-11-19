@@ -88,8 +88,16 @@
     "caption": "当前版本只读；在编辑器继续开发"
   },
   {
-    "id": "end",
+    "id": "github",
     "start": 76,
+    "duration": 12,
+    "image": "assets/screens/13-github.png",
+    "title": "直接连接 GitHub 项目",
+    "caption": "选择分支 · 查看提交版本 · 随时从云端刷新"
+  },
+  {
+    "id": "end",
+    "start": 88,
     "duration": 8,
     "image": "assets/screens/03-overview.png",
     "title": "Project Map",
