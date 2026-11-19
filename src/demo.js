@@ -9,3 +9,31 @@ export const demoFiles = [
   { path: 'src/scoring.py', text: '"""Deterministic scoring for the example."""\ndef score(job: dict) -> int:\n    return len(job.get("matched_skills", []))\n' },
   { path: 'configs/default.yaml', text: '# 合成示例的项目配置\nsearch:\n  max_results: 20\napplication:\n  review_required: true\n' },
 ];
+
+export const demoFilesZH = demoFiles;
+
+const ENGLISH_COPY = new Map([
+  ['搜索职位并根据偏好生成候选清单。此项目为合成示例。', 'Find jobs and build a shortlist from your preferences. This is a synthetic example.'],
+  ['# 发现职位', '# Discover jobs'],
+  ['使用 `search_jobs(query)` 收集候选，再使用 `rank_jobs(jobs)` 排序。', 'Use `search_jobs(query)` to find candidates, then `rank_jobs(jobs)` to sort them.'],
+  ['候选清单准备好后，参考 `.claude/skills/prepare-application/SKILL.md`。', 'Once the shortlist is ready, refer to `.claude/skills/prepare-application/SKILL.md`.'],
+  ['根据职位生成申请材料草稿，交由用户检查。', 'Draft application materials for a job and leave them for user review.'],
+  ['# 准备申请', '# Prepare an application'],
+  ['使用 `draft_application(job_id)` 准备草稿。', 'Use `draft_application(job_id)` to prepare a draft.'],
+  ['交给 `application-reviewer` 检查材料。', 'Ask `application-reviewer` to check the materials.'],
+  ['检查申请材料与已有事实是否一致。', 'Check application materials against known facts.'],
+  ['只检查草稿；不发送申请。', 'Review drafts only; do not submit applications.'],
+  ['根据关键词返回职位候选。', 'Return job candidates matching the query.'],
+  ['根据已有规则为候选职位排序。', 'Rank job candidates using existing rules.'],
+  ['准备申请草稿，等待用户检查。', 'Prepare an application draft for user review.'],
+  ['# 合成示例的项目配置', '# Configuration for the synthetic example'],
+]);
+
+export const demoFilesEN = demoFiles.map(file => ({
+  ...file,
+  text: [...ENGLISH_COPY].reduce((text, [zh, en]) => text.replaceAll(zh, en), file.text),
+}));
+
+export function getDemoFiles(locale = 'zh') {
+  return /^zh/i.test(locale) ? demoFilesZH : demoFilesEN;
+}

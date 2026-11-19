@@ -1,7 +1,7 @@
 import './style.css';
 import { createApp } from './ui.js';
 import { importFolder, LIMITS } from './importer.js';
-import { demoFiles } from './demo.js';
+import { getDemoFiles } from './demo.js';
 import { inspectGitHub, importGitHub } from './github.js';
 
 let sequence = 0;
@@ -36,7 +36,7 @@ function analyze(payload, id, stats = {}, isDemo = false, source = null) {
       data.project.meta.stats = { ...data.project.meta.stats, ...stats };
       data.project.meta.isDemo = isDemo;
       data.project.meta.source = source;
-      if (isDemo) data.project.meta.name = 'Career Agent · 合成示例';
+      if (isDemo) data.project.meta.name = 'Career Agent';
       currentSource = source;
       ui.setProject(data.project);
     } else if (data.type === 'error') {
@@ -95,7 +95,7 @@ const ui = createApp(document.querySelector('#app'), {
   onDemo() {
     const id = stopTask();
     ui.setBusy({ message: '正在打开合成示例…' });
-    analyze({ mode: 'files', files: demoFiles, name: 'Career Agent' }, id, {}, true);
+    analyze({ mode: 'files', files: getDemoFiles(ui.getLocale()), name: 'Career Agent' }, id, {}, true);
   },
   onCancel() { stopTask(); ui.setIdle(); },
 });

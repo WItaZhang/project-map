@@ -575,7 +575,8 @@ export function analyzeProject(input, { name = 'Project', onProgress } = {}) {
     makeNode(`config:${path}`, 'config', path, '', path);
   }
   // A later node must never restore an original host config into the file map.
-  for (const path of Object.keys(files).filter((p) => HOST.test(p))) {
+  const redactedPaths = Object.keys(files).filter((p) => HOST.test(p));
+  for (const path of redactedPaths) {
     let parsed = {};
     try { parsed = path.endsWith('.toml') ? parseToml(originals.get(path)) : JSON.parse(originals.get(path)); } catch { /* redact even invalid files */ }
     files[path] = redactConfig(originals.get(path), parsed);
@@ -585,7 +586,7 @@ export function analyzeProject(input, { name = 'Project', onProgress } = {}) {
   const ended = typeof performance !== 'undefined' ? performance.now() : Date.now();
   progress('完成', paths.length, paths.length);
   return {
-    meta: { name, scannedAt: new Date().toISOString(), llmCalls: 0, counts,
+    meta: { name, scannedAt: new Date().toISOString(), llmCalls: 0, counts, redactedPaths,
       notes: [
         '名称与描述来自 frontmatter、Python docstring 和静态字符串；缺失时留空，没有生成摘要。',
         '支持 SKILL.md、常见 Agent 定义、MCP 配置、Python 装饰器工具及顶层 JS/TS 工具注册。',

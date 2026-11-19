@@ -8,11 +8,11 @@ Skills, agents, tools, MCP configuration, and implementation files often live in
 
 Connect a public GitHub repository, or import a project folder or ZIP. Parsing runs in your browser, with **zero LLM calls and no API key**. Names and descriptions come from source metadata, docstrings, and static strings.
 
-**Status:** early-stage, read-only explorer. The current interface is in Chinese; this README describes its controls in English with their Chinese labels. The bundled example is synthetic.
+**Status:** early-stage, read-only explorer with **English and 简体中文** interfaces. Switch languages in the top bar without losing your place. The bundled example is synthetic.
 
 ## Watch the walkthrough
 
-**English · 96 seconds · 1080p.** Import a project, follow a Skill to its tool and source line, then connect directly to a GitHub repository. English titles and guidance accompany real recordings of the current Chinese interface, with music and no narration.
+**English · 96 seconds · 1080p.** Import a project, follow a Skill to its tool and source line, then connect directly to a GitHub repository. English titles and guidance accompany real recordings of the v0.2 Chinese interface, with music and no narration.
 
 https://github.com/user-attachments/assets/7801e032-a8e9-4176-af01-445ecaa39572
 
@@ -27,12 +27,14 @@ https://github.com/user-attachments/assets/7801e032-a8e9-4176-af01-445ecaa39572
 
 ## Try it
 
-[Open Project Map](https://witazhang.github.io/project-map/) and choose **打开示例** to explore the included project immediately, or connect a public repository directly.
+[Open Project Map](https://witazhang.github.io/project-map/) and choose **Open demo** or click an object in the sample map. Connect a public repository with **GitHub repository**, or choose a local ZIP or folder.
+
+The **中文 / EN** control switches the whole interface instantly. Your browser language sets the initial choice; your preference is saved on this device. Project names, descriptions and code stay in their original language.
 
 ### Connect GitHub
 
-1. Choose **Connect GitHub / 连接 GitHub 仓库** on the welcome screen, or **导入项目 → 连接 GitHub**.
-2. Paste `https://github.com/owner/repo` or `owner/repo`, then choose **Read repository / 读取仓库**.
+1. Choose **GitHub repository / GitHub 仓库** on the welcome screen, or **Add project → Connect GitHub**.
+2. Paste `https://github.com/owner/repo` or `owner/repo`, then choose **Find repository / 读取仓库**.
 3. Select a branch and choose **Connect repository / 连接仓库**. The app reads the cloud file tree and supported source files directly from GitHub. You do not need to download a ZIP or clone the repository.
 4. Explore the map. The sidebar records the branch and commit. **View on GitHub / 在 GitHub 查看** opens the relevant source line at that same commit.
 5. After pushing changes to GitHub, choose **Refresh from GitHub / 从 GitHub 刷新** to read the branch again.
@@ -50,19 +52,19 @@ npm ci
 npm run dev
 ```
 
-Open **http://127.0.0.1:4173** and choose **Open example / 打开示例**. No project, account, model key, or Python installation is needed to try the example.
+Open **http://127.0.0.1:4173** and choose **Open demo / 打开示例**. No project, account, model key, or Python installation is needed to try the example.
 
-For a local project, use **Import project / 导入项目** → **Choose ZIP / 选择 ZIP 文件** or **Choose folder / 选择项目文件夹**. You can also drop a ZIP onto the app. Use a modern browser with module Web Worker support; ZIP import is available when directory selection is unavailable.
+For a local project, use **Add project / 导入项目** → **Choose ZIP / 选择 ZIP 文件** or **Choose folder / 选择项目文件夹**. You can also drop a ZIP onto the app. Use a modern browser with module Web Worker support; ZIP import is available when directory selection is unavailable.
 
 ## From a capability to its implementation
 
 A complete example using the included Career Agent:
 
 1. **Start with a Skill.** Select `discover-jobs` in the browser or canvas. The map focuses on its immediate neighbors.
-2. **Check the connection.** Open **Relationships / 关系**, find `search_jobs`, and select **Source / 出处**. The inspector shows the reference in `SKILL.md`, its path and line, and whether it is a declaration or a text mention.
-3. **Find the implementation.** Select the `search_jobs` node, then **Code / 源码**. Its definition in `src/server.py` is highlighted. Copy the relative `path:line` to locate it in your editor.
+2. **Check the connection.** Open **Relations / 关系**, find `search_jobs`, and select **Evidence / 出处**. The inspector shows the reference in `SKILL.md`, its path and line, and whether it is a declaration or a text mention.
+3. **Find the implementation.** Select the `search_jobs` node, then **Source / 源码**. Its definition in `src/server.py` is highlighted. Copy the relative `path:line` to locate it in your editor.
 4. **Explore the surrounding project.** Search names, descriptions, or paths; filter by object type; switch between **Overview / 全览** and **Focus / 聚焦**. Pan, zoom, drag nodes, or fit the canvas to the view.
-5. **Make changes in your editor, then refresh.** Reimport local files, or push your changes and choose **从 GitHub 刷新** for a connected repository. The map shows a snapshot; it does not edit source files or watch for changes.
+5. **Make changes in your editor, then refresh.** Reimport local files, or push your changes and choose **Refresh from GitHub** for a connected repository. The map shows a snapshot; it does not edit source files or watch for changes.
 
 ## What it recognizes
 
@@ -149,13 +151,12 @@ The parsers use Babel, Lezer Python, YAML, and smol-toml; ZIP handling uses ffla
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for setup and the contribution workflow. Useful contributions include small parser adapters, reproducible missing-link cases, clearer graph interactions, and accessibility improvements.
 
-For parser changes, include a minimal synthetic fixture and test both the discovered object and its evidence location. Document unsupported cases rather than guessing relationships. For UI changes, check empty, importing, loaded, and failed-import states, including a narrow viewport. Keep private project content out of fixtures, screenshots, and issues.
+For parser changes, include a minimal synthetic fixture and test both the discovered object and its evidence location. Document unsupported cases rather than guessing relationships. For UI changes, check both languages in empty, importing, loaded, and failed-import states, including a narrow viewport. See the [interface design notes](docs/interface-design.md) for the design approach and reviewed skills. Keep private project content out of fixtures, screenshots, and issues.
 
 ## Roadmap
 
 Directions for future work; these are not implemented features:
 
-- English UI and localization.
 - More registration adapters and language coverage, backed by source evidence and fixtures.
 - Saved layouts and exportable maps.
 - Snapshot comparisons to inspect how a project's structure changes.

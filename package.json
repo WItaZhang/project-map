@@ -1,7 +1,7 @@
 {
   "name": "project-map-app",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A local-first visual map of agent projects: Skills, agents, tools, MCP, and source evidence. No LLM required.",
   "license": "MIT",
   "repository": {

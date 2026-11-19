@@ -8,7 +8,7 @@ Follow one synthetic Career Agent project from import to a source definition. Th
 
 [English video](../README.md#watch-the-walkthrough) · [中文视频](../README.zh-CN.md#观看完整演示)
 
-Both 96-second, 1080p editions show real app interactions: ZIP import, map navigation, relationship evidence, source lookup, and a direct public GitHub connection. The English edition has English guidance over the Chinese app interface. Both include original music, without narration.
+Both 96-second, 1080p editions were recorded with v0.2 and show real app interactions: ZIP import, map navigation, relationship evidence, source lookup, and a direct public GitHub connection. The English edition has English guidance over the Chinese app interface. Both include original music, without narration.
 
 [English MP4](https://github.com/WItaZhang/project-map/releases/download/v0.2.0/project-map-walkthrough-en.mp4) · [中文 MP4](https://github.com/WItaZhang/project-map/releases/download/v0.2.0/project-map-walkthrough-zh.mp4) · [Editable video project](../video/README.md)
 
@@ -16,16 +16,16 @@ Both 96-second, 1080p editions show real app interactions: ZIP import, map navig
 
 ## Follow along
 
-Use the [live app](https://witazhang.github.io/project-map/), or run `npm ci` and `npm run dev`, then open http://127.0.0.1:4173.
+Use the [live app](https://witazhang.github.io/project-map/), or run `npm ci` and `npm run dev`, then open http://127.0.0.1:4173. Choose **EN** or **中文** in the top bar. Switching preserves your project, selection, search and map position.
 
 | Step | In the app | What you learn |
 | --- | --- | --- |
-| 1. Import | Choose **选择 ZIP** and open `examples/career-agent-demo.zip`; alternatively choose **打开示例** | Your source becomes a local snapshot. No model key is needed. |
-| 2. Survey | Select **全部** and **全览** | Skills, agents, tools, MCP instances, modules, and configuration are distinct objects. |
+| 1. Import | Choose **Choose ZIP** and open `examples/career-agent-demo.zip`; alternatively choose **Open demo** | Your source becomes a local snapshot. No model key is needed. |
+| 2. Survey | Select **All** and **Overview** | Skills, agents, tools, MCP instances, modules, and configuration are distinct objects. |
 | 3. Choose a capability | Select `discover-jobs` | The original description and nearby objects explain where to explore next. |
-| 4. Verify a relationship | Open **关系**, find `search_jobs`, and choose **出处** | The reference is a text mention in `SKILL.md`, with a precise path and line. |
-| 5. Find the tool | Select **工具**, search `search_jobs`, then select it | The tool has its own declaration and source location. |
-| 6. Locate the implementation | Open **源码** | `src/server.py:8` is highlighted. **复制相对路径:行** copies the relative path and line for use in your editor. |
+| 4. Verify a relationship | Open **Relations**, find `search_jobs`, and choose **Evidence** | The reference is a text mention in `SKILL.md`, with a precise path and line. |
+| 5. Find the tool | Select **Tool**, search `search_jobs`, then select it | The tool has its own declaration and source location. |
+| 6. Locate the implementation | Open **Source** | `src/server.py:8` is highlighted. **Copy path:line** copies the relative path and line for use in your editor. |
 | 7. Inspect MCP | Select **MCP**, then a `career` entry | Configuration discoveries and source server instances remain distinct. No server connection is made. |
 | 8. Keep developing | Change files in your editor, then import again | The current version is a read-only snapshot. It does not write changes back. |
 
