@@ -10,8 +10,8 @@ export const options = {
 export async function writeHTML() {
   await mkdir('dist', { recursive: true });
   let html = await readFile('index.html', 'utf8');
-  html = html.replace(/(?:\.\/)?(?:\/)?src\/main\.js/g, '/assets/main.js');
-  if (!html.includes('/assets/main.css')) html = html.replace('</head>', '<link rel="stylesheet" href="/assets/main.css"></head>');
+  html = html.replace(/(?:\.\/)?(?:\/)?src\/main\.js/g, './assets/main.js');
+  if (!html.includes('/assets/main.css')) html = html.replace('</head>', '<link rel="stylesheet" href="./assets/main.css"></head>');
   // Same-origin assets only. No endpoint receives the imported project.
   const policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'";
   html = html.replace('<head>', '<head><meta http-equiv="Content-Security-Policy" content="' + policy + '">');

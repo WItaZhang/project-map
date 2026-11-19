@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="620" viewBox="0 0 1400 620" role="img" aria-labelledby="title desc">
+  <title id="title">Project Map — from capabilities to code</title>
+  <desc id="desc">A concept illustration connecting Skills, agents, tools, MCP servers, configuration, and source modules. Local browser parsing, zero LLM calls, and source evidence.</desc>
+  <defs>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#dce3ee"/></pattern>
+  </defs>
+  <rect width="1400" height="620" rx="24" fill="#f6f8fc"/>
+  <rect x="592" y="30" width="778" height="560" rx="18" fill="url(#dots)"/>
+  <g font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+    <g transform="translate(66 68)">
+      <rect width="50" height="50" rx="13" fill="#e6edfc" stroke="#cfdaf0"/>
+      <path d="M14 16H35L25 35Z" stroke="#587dbf" stroke-width="2.5" fill="none"/>
+      <g fill="#587dbf"><circle cx="14" cy="16" r="4"/><circle cx="35" cy="16" r="4"/><circle cx="25" cy="35" r="4"/></g>
+      <text x="66" y="34" font-size="31" font-weight="700" fill="#263957">Project Map</text>
+    </g>
+    <text x="66" y="227" font-size="56" font-weight="700" letter-spacing="-2" fill="#263957">From capabilities</text>
+    <text x="66" y="293" font-size="56" font-weight="700" letter-spacing="-2" fill="#4d73c4">to code.</text>
+    <text x="69" y="354" font-size="23" fill="#64738c">See what your agent project contains.</text>
+    <text x="69" y="390" font-size="23" fill="#64738c">Follow each connection to its source.</text>
+    <g font-size="16" font-weight="600" fill="#50617e">
+      <rect x="66" y="461" width="143" height="39" rx="19" fill="#e9eef8"/><text x="86" y="486">Local parsing</text>
+      <rect x="219" y="461" width="135" height="39" rx="19" fill="#e9eef8"/><text x="239" y="486">0 LLM calls</text>
+      <rect x="364" y="461" width="145" height="39" rx="19" fill="#e9eef8"/><text x="384" y="486">Open source</text>
+    </g>
+    <g stroke="#bdcbe2" stroke-width="2" fill="none">
+      <path d="M837 158C890 158 846 300 906 300"/>
+      <path d="M1214 158C1145 158 1170 300 1118 300"/>
+      <path d="M1012 350V418"/>
+      <path d="M745 418V326Q745 300 785 300H906"/>
+      <path d="M1246 418V326Q1246 300 1206 300H1118"/>
+    </g>
+    <g transform="translate(666 111)">
+      <rect width="196" height="94" rx="13" fill="#fff" stroke="#dacfe9"/>
+      <circle cx="24" cy="26" r="5" fill="#9e80bc"/><text x="39" y="32" font-size="15" font-weight="600" fill="#81619e">SKILL</text>
+      <text x="20" y="65" font-size="20" font-weight="600" fill="#344762">my-skill</text>
+    </g>
+    <g transform="translate(1116 111)">
+      <rect width="212" height="94" rx="13" fill="#fff" stroke="#c9dce7"/>
+      <circle cx="24" cy="26" r="5" fill="#6d98b0"/><text x="39" y="32" font-size="15" font-weight="600" fill="#527e96">AGENT</text>
+      <text x="20" y="65" font-size="20" font-weight="600" fill="#344762">review-agent</text>
+    </g>
+    <g transform="translate(906 253)">
+      <rect width="212" height="98" rx="13" fill="#fff" stroke="#d9c9ad" stroke-width="2"/>
+      <circle cx="24" cy="27" r="5" fill="#bb945e"/><text x="39" y="33" font-size="15" font-weight="600" fill="#a07c48">TOOL</text>
+      <text x="20" y="68" font-size="23" font-weight="600" fill="#344762">my_tool</text>
+    </g>
+    <g transform="translate(647 418)">
+      <rect width="196" height="94" rx="13" fill="#fff" stroke="#c5dcce"/>
+      <circle cx="24" cy="26" r="5" fill="#74a68c"/><text x="39" y="32" font-size="15" font-weight="600" fill="#5b886e">MCP</text>
+      <text x="20" y="65" font-size="20" font-weight="600" fill="#344762">my-server</text>
+    </g>
+    <g transform="translate(906 418)">
+      <rect width="212" height="94" rx="13" fill="#fff" stroke="#bfd1eb"/>
+      <circle cx="24" cy="26" r="5" fill="#7d9bc8"/><text x="39" y="32" font-size="15" font-weight="600" fill="#5e7fae">MODULE</text>
+      <text x="20" y="65" font-size="20" font-weight="600" fill="#344762">src/tool.py:8</text>
+    </g>
+    <g transform="translate(1154 418)">
+      <rect width="184" height="94" rx="13" fill="#fff" stroke="#d8dde5"/>
+      <circle cx="24" cy="26" r="5" fill="#98a3b5"/><text x="39" y="32" font-size="15" font-weight="600" fill="#77849a">CONFIG</text>
+      <text x="20" y="65" font-size="20" font-weight="600" fill="#344762">.mcp.json</text>
+    </g>
+    <text x="989" y="561" text-anchor="middle" font-size="13" letter-spacing="1.4" fill="#7a89a1">CONCEPT ILLUSTRATION · SOURCE EVIDENCE IN THE APP</text>
+  </g>
+</svg>
