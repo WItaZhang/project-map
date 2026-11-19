@@ -14,6 +14,16 @@ The video shows the actual app: import a ZIP, navigate the map, inspect a Skill'
 
 ![The synthetic Career Agent project in Project Map](assets/project-map-overview.png)
 
+## Connect a public GitHub project
+
+Open the [live app](https://witazhang.github.io/project-map/) and choose **连接 GitHub 仓库**, or **导入项目 → 连接 GitHub**. Paste a public repository URL such as `https://github.com/WItaZhang/project-map` (or `WItaZhang/project-map`), choose **读取仓库**, select a branch, and choose **连接仓库**.
+
+The app reads the repository directly from GitHub without a ZIP or local clone. The map records the branch, commit, and fetch time. Open a node's **源码** tab and choose **在 GitHub 查看** to inspect that exact commit and line on GitHub. After pushing a change, **从 GitHub 刷新** creates a new snapshot of the branch.
+
+Public access needs no sign-in or model key. Analysis still runs in the browser. GitHub's anonymous API quota applies, and the current connection does not support private repositories, automatic updates, or writing changes back.
+
+中文：点击「连接 GitHub 仓库」，粘贴公开仓库链接，读取仓库并选择分支，即可从云端生成地图。侧栏标明分支和 commit；「在 GitHub 查看」定位同一版本的源码行。推送修改后点「从 GitHub 刷新」，无需手动下载或重新上传项目。
+
 ## Follow along
 
 Use the [live app](https://witazhang.github.io/project-map/), or run `npm ci` and `npm run dev`, then open http://127.0.0.1:4173.
@@ -43,5 +53,5 @@ Use the [live app](https://witazhang.github.io/project-map/), or run `npm ci` an
 6. 查看 MCP 对象，区分配置中的服务与源码中的实例。
 7. 在编辑器修改项目，重新导入查看新快照。
 
-演示涵盖浏览器本地解析、零 LLM 调用、原始描述提取，以及从关系回到来源的操作。当前版本不执行工具、不连接 MCP，也不修改项目；修改源码后需要重新导入。
+演示涵盖浏览器本地解析、零 LLM 调用、原始描述提取，以及从关系回到来源的操作。当前版本不执行工具、不连接 MCP，也不修改项目；本地源码修改后重新导入，GitHub 项目推送后点「从 GitHub 刷新」。
 

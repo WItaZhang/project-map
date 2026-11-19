@@ -108,3 +108,82 @@ test('pointer dragging moves nodes and background panning changes the viewport',
   svg.dispatchEvent(event('pointerup', 60, 30));
   assert.notEqual(transform.getAttribute('transform'), before);
 });
+
+test('GitHub dialog inspects once, selects a branch, and connects without opening a file picker', async t => {
+  let resolveInspect, inspections = 0, selected;
+  const { root, window } = mount(t, {
+    onGitHubInspect: (url, { signal }) => {
+      inspections++; assert.equal(url, 'https://github.com/example/agent'); assert.equal(signal.aborted, false);
+      return new Promise(resolve => { resolveInspect = resolve; });
+    },
+    onGitHubConnect: input => { selected = input; },
+  });
+  root.querySelector('.welcome [data-action="connect-github"]').click();
+  const input = root.querySelector('#github-url'), form = root.querySelector('.github-form');
+  assert.equal(window.document.activeElement, input);
+  input.value = 'https://github.com/example/agent';
+  form.dispatchEvent(new window.Event('submit', { bubbles: true, cancelable: true }));
+  form.dispatchEvent(new window.Event('submit', { bubbles: true, cancelable: true }));
+  assert.equal(inspections, 1, 'A pending inspection cannot be double-submitted');
+  resolveInspect({ owner: 'example', repo: 'agent', fullName: 'example/agent', defaultBranch: 'main', branches: ['main', 'feature/jobs'] });
+  await Promise.resolve(); await Promise.resolve();
+  assert.equal(root.querySelector('.github-submit').textContent, '连接仓库');
+  const branch = root.querySelector('#github-branch');
+  assert.equal(branch.value, 'main'); branch.value = 'feature/jobs';
+  form.dispatchEvent(new window.Event('submit', { bubbles: true, cancelable: true }));
+  assert.deepEqual(selected, { owner: 'example', repo: 'agent', branch: 'feature/jobs' });
+  assert.ok(root.querySelector('.github-overlay').classList.contains('hidden'));
+});
+
+test('GitHub errors remain in the dialog; cancelling aborts and ignores late inspection results', async t => {
+  let reject = true, finish, signal;
+  const { root, app, window } = mount(t, {
+    onGitHubInspect: (_url, options) => {
+      signal = options.signal;
+      if (reject) return Promise.reject(new Error('仓库不存在，或不是公开仓库。'));
+      return new Promise(resolve => { finish = resolve; });
+    },
+  });
+  app.setProject(project);
+  root.querySelector('[data-action="import"]').click();
+  root.querySelector('.import-menu [data-action="connect-github"]').click();
+  const input = root.querySelector('#github-url'), form = root.querySelector('.github-form');
+  input.value = 'example/missing';
+  form.dispatchEvent(new window.Event('submit', { cancelable: true }));
+  await Promise.resolve(); await Promise.resolve();
+  assert.match(root.querySelector('.github-error').textContent, /不是公开仓库/);
+  assert.ok(!root.querySelector('.github-overlay').classList.contains('hidden'));
+  assert.ok(root.querySelector('.error-banner').classList.contains('hidden'));
+  assert.equal(root.querySelector('.project-name').textContent, 'Synthetic Project');
+  reject = false;
+  form.dispatchEvent(new window.Event('submit', { cancelable: true }));
+  window.dispatchEvent(new window.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+  assert.equal(signal.aborted, true);
+  assert.equal(window.document.activeElement, root.querySelector('[data-action="import"]'));
+  finish({ owner: 'example', repo: 'agent', defaultBranch: 'main', branches: ['main'] });
+  await Promise.resolve(); await Promise.resolve();
+  assert.ok(root.querySelector('.github-overlay').classList.contains('hidden'));
+  assert.equal(root.querySelector('#github-branch').childElementCount, 0, 'Cancelled results cannot repopulate the dialog');
+});
+
+test('GitHub source provenance, refresh, and immutable evidence links follow the loaded project', t => {
+  let refreshes = 0;
+  const { root, app } = mount(t, { onGitHubRefresh: () => refreshes++ });
+  const commit = '0123456789abcdef0123456789abcdef01234567';
+  app.setProject({ ...project, meta: { ...project.meta, isDemo: false, source: { type: 'github', owner: 'example', repo: 'agent', branch: 'feature/jobs', commit, htmlURL: 'https://github.com/example/agent' } } });
+  assert.match(root.querySelector('.github-provenance').textContent, /example\/agent.*feature\/jobs.*0123456/);
+  assert.match(root.querySelector('.project-stats').textContent, /GitHub 快照.*手动刷新/);
+  root.querySelector('[data-action="refresh-github"]').click(); assert.equal(refreshes, 1);
+  app.setBusy({ message: 'Refreshing' }); assert.equal(root.querySelector('[data-action="refresh-github"]').disabled, true); app.setIdle();
+  root.querySelector('.object-row').click();
+  assert.equal(root.querySelector('.github-source-link').href, `https://github.com/example/agent/blob/${commit}/skills/find/SKILL.md#L3`);
+  root.querySelector('[data-tab="relations"]').click(); root.querySelector('.relation-evidence').click();
+  const link = root.querySelector('.github-source-link');
+  assert.equal(link.href, `https://github.com/example/agent/blob/${commit}/skills/find/SKILL.md#L6`);
+  assert.equal(link.rel, 'noopener noreferrer');
+  app.setProject(project);
+  assert.ok(root.querySelector('.github-provenance').classList.contains('hidden'));
+  assert.ok(root.querySelector('.github-refresh').classList.contains('hidden'));
+  root.querySelector('.object-row').click();
+  assert.equal(root.querySelector('.github-source-link'), null, 'Local imports do not retain links to the previous repository');
+});

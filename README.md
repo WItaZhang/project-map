@@ -6,7 +6,7 @@
 
 Skills, agents, tools, MCP configuration, and implementation files often live in different parts of a repository. Project Map brings them onto one interactive canvas so you can follow a capability to its source and inspect the evidence behind each connection.
 
-Import a project folder or ZIP. Parsing runs locally in your browser, with **zero LLM calls and no API key**. Names and descriptions come from source metadata, docstrings, and static strings.
+Connect a public GitHub repository, or import a project folder or ZIP. Parsing runs in your browser, with **zero LLM calls and no API key**. Names and descriptions come from source metadata, docstrings, and static strings.
 
 ![Project Map showing the synthetic Career Agent project on its interactive canvas](docs/assets/project-map-overview.png)
 
@@ -22,7 +22,17 @@ See a project ZIP become a map, follow `discover-jobs` to the evidence for `sear
 
 ## Try it
 
-[Open Project Map](https://witazhang.github.io/project-map/) and choose **打开示例** to explore the included project immediately. Your imported source stays in your browser.
+[Open Project Map](https://witazhang.github.io/project-map/) and choose **打开示例** to explore the included project immediately, or connect a public repository directly.
+
+### Connect GitHub
+
+1. Choose **Connect GitHub / 连接 GitHub 仓库** on the welcome screen, or **导入项目 → 连接 GitHub**.
+2. Paste `https://github.com/owner/repo` or `owner/repo`, then choose **Read repository / 读取仓库**.
+3. Select a branch and choose **Connect repository / 连接仓库**. The app reads the cloud file tree and supported source files directly from GitHub. You do not need to download a ZIP or clone the repository.
+4. Explore the map. The sidebar records the branch, commit, and fetch time. **View on GitHub / 在 GitHub 查看** opens the relevant source line at that same commit.
+5. After pushing changes to GitHub, choose **Refresh from GitHub / 从 GitHub 刷新** to read the branch again.
+
+GitHub remains the source of the project; analysis runs in your browser. Each load is a consistent commit snapshot. This connection currently supports public repositories without sign-in; it does not watch for changes, write commits, or create a cloud workspace.
 
 ### Run locally
 
@@ -37,7 +47,7 @@ npm run dev
 
 Open **http://127.0.0.1:4173** and choose **Open example / 打开示例**. No project, account, model key, or Python installation is needed to try the example.
 
-To inspect your own project, use **Import project / 导入项目** → **Choose ZIP / 选择 ZIP 文件** or **Choose folder / 选择项目文件夹**. You can also drop a ZIP onto the app. Use a modern browser with module Web Worker support; ZIP import is available when directory selection is unavailable.
+For a local project, use **Import project / 导入项目** → **Choose ZIP / 选择 ZIP 文件** or **Choose folder / 选择项目文件夹**. You can also drop a ZIP onto the app. Use a modern browser with module Web Worker support; ZIP import is available when directory selection is unavailable.
 
 ## From a capability to its implementation
 
@@ -47,7 +57,7 @@ A complete example using the included Career Agent:
 2. **Check the connection.** Open **Relationships / 关系**, find `search_jobs`, and select **Source / 出处**. The inspector shows the reference in `SKILL.md`, its path and line, and whether it is a declaration or a text mention.
 3. **Find the implementation.** Select the `search_jobs` node, then **Code / 源码**. Its definition in `src/server.py` is highlighted. Copy the relative `path:line` to locate it in your editor.
 4. **Explore the surrounding project.** Search names, descriptions, or paths; filter by object type; switch between **Overview / 全览** and **Focus / 聚焦**. Pan, zoom, drag nodes, or fit the canvas to the view.
-5. **Make changes in your editor, then reimport.** The map is a snapshot of the imported files. It does not edit source files or watch the filesystem.
+5. **Make changes in your editor, then refresh.** Reimport local files, or push your changes and choose **从 GitHub 刷新** for a connected repository. The map shows a snapshot; it does not edit source files or watch for changes.
 
 ## What it recognizes
 
@@ -79,12 +89,13 @@ A configured MCP endpoint and a server instance found in code keep separate iden
 
 ## Privacy and execution boundaries
 
-- **Local processing.** ZIP decompression and analysis run in a browser Web Worker. Folder files are read through the browser's file picker. Project contents are not uploaded, and the app makes no model or MCP requests.
-- **Session memory.** Imported projects stay in memory for the current page session. There is no project database, account, cloud synchronization, or persisted workspace.
+- **Local imports.** ZIP decompression and analysis run in a browser Web Worker. Folder files are read through the browser's file picker. Local project contents are not sent over the network. The app makes no model or MCP requests.
+- **GitHub connection.** Only when you connect or refresh a repository, the browser sends read-only GET requests to `api.github.com` and `raw.githubusercontent.com`. GitHub receives those repository/file requests and your network connection information. No token, local project content, or source changes are uploaded.
+- **Snapshot memory.** The active project snapshot is held in page memory. There is no project database, account, or persisted workspace. The browser may cache immutable GitHub source responses according to its HTTP cache settings.
 - **Text only.** Imported code is never executed. ZIP contents are not extracted onto your filesystem.
 - **Explicit exclusions.** Dependency, build, data, and log directories are skipped, along with `.env*`, `profile.json`, and known credential files. The full rules are in [the importer](src/importer.js).
 - **Limited redaction.** Recognized MCP host configurations retain key names and line positions while hiding values and comments. Ordinary source files and other configurations are not generally redacted; the exclusions are not a secret scanner.
-- **Static distribution.** The production build bundles its dependencies locally and sets a Content Security Policy with `connect-src 'none'`. Loading the app still downloads its application assets from the host.
+- **Static distribution.** The production build bundles dependencies locally. Its Content Security Policy permits data connections only to the GitHub API and raw-source hosts. Loading the app also fetches its application assets from the host.
 
 See [SECURITY.md](SECURITY.md) for security reporting.
 
@@ -96,13 +107,16 @@ See [SECURITY.md](SECURITY.md) for security reporting.
 | Selected source files | 2,000 |
 | Individual source file | 1 MiB; larger files are skipped |
 | Total selected text | 20 MiB |
-| ZIP directory entries | 50,000 |
+| ZIP or GitHub tree entries | 50,000 |
+| GitHub branch choices | 1,000 |
 
 Source text and ZIP filenames must be UTF-8. Standard Store/Deflate ZIPs are supported; encrypted, multipart, and ZIP64 archives are not. ZIP symbolic links are skipped, and invalid or duplicate source paths are rejected.
 
+GitHub connections use the anonymous public API quota, which is shared by requests from your IP address. GitHub currently allows 60 unauthenticated API requests per hour; a connection uses several metadata requests, while source files are read from the raw-source host. If the quota is exhausted, wait for the indicated reset. See [GitHub's rate-limit documentation](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api). Truncated GitHub trees are rejected rather than displayed as complete; symlinks and submodules are skipped.
+
 The overview draws up to 36 objects; a focused map shows the selected object and up to 14 neighbors. The inspector retains the complete relationship list. For large projects, use type filters and search instead of rendering every file at once.
 
-This version does not provide a complete call graph, runtime traces, dependency-injection resolution, dynamic registration discovery, or a guaranteed change-impact analysis. JavaScript import resolution is limited to project-relative paths. Reimport after changes; source editing, live filesystem watching, and GitHub synchronization are not implemented.
+This version does not provide a complete call graph, runtime traces, dependency-injection resolution, dynamic registration discovery, or a guaranteed change-impact analysis. JavaScript import resolution is limited to project-relative paths. Reimport local files or refresh the connected GitHub branch after changes. Source editing, automatic watching, private-repository authorization, and writing back to GitHub are not implemented.
 
 ## Develop and self-host
 
@@ -116,6 +130,7 @@ The static build is written to `dist/`. Serve that directory over HTTP(S), eithe
 | File | Responsibility |
 | --- | --- |
 | [`src/importer.js`](src/importer.js) | ZIP/folder input, exclusions, path validation, and resource limits |
+| [`src/github.js`](src/github.js) | Public repository/branch discovery and commit-pinned cloud source reads |
 | [`src/analyze.js`](src/analyze.js) | Deterministic extraction and evidence-bearing relationships |
 | [`src/worker.js`](src/worker.js) | Background decompression and analysis |
 | [`src/main.js`](src/main.js) | Import lifecycle, progress, cancellation, and UI integration |

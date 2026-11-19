@@ -12,8 +12,9 @@ export async function writeHTML() {
   let html = await readFile('index.html', 'utf8');
   html = html.replace(/(?:\.\/)?(?:\/)?src\/main\.js/g, './assets/main.js');
   if (!html.includes('/assets/main.css')) html = html.replace('</head>', '<link rel="stylesheet" href="./assets/main.css"></head>');
-  // Same-origin assets only. No endpoint receives the imported project.
-  const policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'";
+  // Cloud reads are limited to GitHub API metadata and immutable raw source.
+  // Local ZIP/folder imports still make no project-content network requests.
+  const policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src https://api.github.com https://raw.githubusercontent.com; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'";
   html = html.replace('<head>', '<head><meta http-equiv="Content-Security-Policy" content="' + policy + '">');
   await writeFile('dist/index.html', html);
 }

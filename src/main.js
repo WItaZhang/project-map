@@ -2,10 +2,12 @@ import './style.css';
 import { createApp } from './ui.js';
 import { importFolder, LIMITS } from './importer.js';
 import { demoFiles } from './demo.js';
+import { inspectGitHub, importGitHub } from './github.js';
 
 let sequence = 0;
 let worker = null;
 let reader = null;
+let currentSource = null;
 
 function stopTask() {
   sequence++;
@@ -22,7 +24,7 @@ function progress(message, id) {
   ui.setBusy({ message: message.phase || '正在解析项目…', progress: fraction });
 }
 
-function analyze(payload, id, stats = {}, isDemo = false) {
+function analyze(payload, id, stats = {}, isDemo = false, source = null) {
   if (id !== sequence) return;
   worker = new Worker(new URL('./worker.js', import.meta.url), { type: 'module' });
   worker.onmessage = ({ data }) => {
@@ -33,7 +35,9 @@ function analyze(payload, id, stats = {}, isDemo = false) {
       if (!data.project.nodes.length) { ui.setError('没有识别到项目对象。请导入包含 Skill、MCP 配置、Python 或 JS/TS 源码的项目。'); return; }
       data.project.meta.stats = { ...data.project.meta.stats, ...stats };
       data.project.meta.isDemo = isDemo;
+      data.project.meta.source = source;
       if (isDemo) data.project.meta.name = 'Career Agent · 合成示例';
+      currentSource = source;
       ui.setProject(data.project);
     } else if (data.type === 'error') {
       worker?.terminate(); worker = null;
@@ -48,7 +52,26 @@ function analyze(payload, id, stats = {}, isDemo = false) {
   worker.postMessage({ id, ...payload }, payload.buffer ? [payload.buffer] : []);
 }
 
+async function connectGitHub(repository) {
+  const id = stopTask();
+  reader = new AbortController();
+  ui.setBusy({ message: '正在连接 GitHub…' });
+  try {
+    const imported = await importGitHub(repository, {
+      signal: reader.signal,
+      onProgress: value => progress(value, id),
+    });
+    if (id !== sequence) return;
+    analyze({ mode: 'files', files: imported.files, name: imported.name }, id, imported.stats, false, imported.source);
+  } catch (error) {
+    if (id === sequence && error.name !== 'AbortError') ui.setError(error.message);
+  }
+}
+
 const ui = createApp(document.querySelector('#app'), {
+  onGitHubInspect(url, options) { return inspectGitHub(url, options); },
+  onGitHubConnect: connectGitHub,
+  onGitHubRefresh() { if (currentSource?.type === 'github') return connectGitHub(currentSource); },
   async onZip(file) {
     const id = stopTask();
     ui.setBusy({ message: '正在读取 ZIP…' });

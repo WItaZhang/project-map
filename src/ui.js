@@ -46,21 +46,34 @@ export function createApp(rootElement, handlers = {}) {
   shell.innerHTML = `
     <header class="topbar">
       <div class="brand"><div class="brand-mark" aria-hidden="true"><svg viewBox="0 0 28 28" width="28" height="28"><path d="M7 7L21 7M7 7L14 21M21 7L14 21" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="7" cy="7" r="3.4" fill="currentColor"/><circle cx="21" cy="7" r="3.4" fill="currentColor"/><circle cx="14" cy="21" r="3.4" fill="currentColor"/></svg></div><div class="brand-copy"><span class="brand-name">Project Map</span><span class="brand-subtitle">从能力，找到实现</span></div></div>
-      <div class="top-actions"><span class="badge demo-badge hidden">合成示例</span><span class="badge local-badge"><i></i>浏览器本地解析</span><button class="btn btn-subtle" data-action="demo">打开示例</button><button class="btn btn-primary" data-action="import" aria-haspopup="menu" aria-expanded="false">＋ 导入项目</button><div class="import-menu hidden" role="menu"><button class="btn btn-subtle" data-action="choose-zip" role="menuitem">选择 ZIP 文件</button><button class="btn btn-subtle" data-action="choose-folder" role="menuitem">选择项目文件夹</button></div></div>
+      <div class="top-actions"><span class="badge demo-badge hidden">合成示例</span><span class="badge local-badge"><i></i>浏览器本地解析</span><button class="btn btn-subtle" data-action="demo">打开示例</button><button class="btn btn-primary" data-action="import" aria-haspopup="menu" aria-expanded="false">＋ 导入项目</button><div class="import-menu hidden" role="menu"><button class="btn btn-subtle" data-action="connect-github" role="menuitem">连接 GitHub</button><button class="btn btn-subtle" data-action="choose-zip" role="menuitem">选择 ZIP 文件</button><button class="btn btn-subtle" data-action="choose-folder" role="menuitem">选择项目文件夹</button></div></div>
     </header>
     <div class="error-banner hidden" role="alert"><span class="error-message"></span><button class="error-retry btn btn-subtle">重试</button><button class="dismiss-error btn btn-icon" aria-label="关闭错误提示">×</button></div>
     <div class="workspace">
-      <aside class="sidebar"><div class="sidebar-head"><div class="project-switch"><div><div class="project-name"></div><div class="project-meta"></div></div><button class="btn btn-icon mobile-only" data-action="close-sidebar" aria-label="关闭对象浏览器">×</button></div><div class="search-box"><span aria-hidden="true">⌕</span><input type="search" autocomplete="off" spellcheck="false" placeholder="搜索名称、路径、描述" aria-label="搜索对象"></div><div class="filter-list" aria-label="对象类型筛选"></div></div><div class="object-list"></div><div class="sidebar-foot"><div class="project-stats"></div><button class="notes-toggle">查看解析说明 ↗</button><div class="notes-content hidden"></div></div></aside>
+      <aside class="sidebar"><div class="sidebar-head"><div class="project-switch"><div><div class="project-name"></div><div class="project-meta"></div><div class="github-provenance hidden"></div></div><button class="btn btn-icon mobile-only" data-action="close-sidebar" aria-label="关闭对象浏览器">×</button></div><div class="search-box"><span aria-hidden="true">⌕</span><input type="search" autocomplete="off" spellcheck="false" placeholder="搜索名称、路径、描述" aria-label="搜索对象"></div><div class="filter-list" aria-label="对象类型筛选"></div></div><div class="object-list"></div><div class="sidebar-foot"><button class="btn btn-subtle github-refresh hidden" data-action="refresh-github">↻ 从 GitHub 刷新</button><div class="project-stats"></div><button class="notes-toggle">查看解析说明 ↗</button><div class="notes-content hidden"></div></div></aside>
       <main class="canvas-area">
         <div class="canvas-topbar"><div class="breadcrumb"><button class="btn btn-icon mobile-only" data-action="open-sidebar" aria-label="打开对象浏览器">☰</button><span class="breadcrumb-label">项目概览</span></div><div class="canvas-actions"><div class="view-tabs"><button class="active" data-view="overview">全览</button><button data-view="focus">聚焦</button></div><button class="btn btn-icon" data-action="fit" aria-label="适应画布" title="适应画布">⊡</button><button class="btn btn-icon" data-action="toggle-inspector" aria-label="切换检查器" title="显示或隐藏检查器">◧</button></div></div>
         <div class="canvas-viewport"><svg class="map-svg" tabindex="0" role="img" aria-label="项目关系画布，可拖动平移与滚轮缩放"><defs><marker id="map-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#aebdce"/></marker></defs><g class="map-transform"><g class="map-edges"></g><g class="map-nodes"></g></g></svg><div class="canvas-message hidden"></div></div>
         <div class="canvas-bottom"><div class="legend"></div><div class="zoom-controls"><button class="btn btn-icon" data-action="zoom-out" aria-label="缩小画布">−</button><button class="zoom-value" data-action="zoom-reset" title="重置为 100%">100%</button><button class="btn btn-icon" data-action="zoom-in" aria-label="放大画布">＋</button></div></div>
-        <section class="welcome"><div class="welcome-art" aria-hidden="true"><svg viewBox="0 0 270 130" width="270" height="130"><path d="M135 47V74M135 74H48V92M135 74H222V92M135 74V103" stroke="#cdd9e7" stroke-width="1.5" fill="none"/><rect x="86" y="8" width="98" height="42" rx="9" fill="#f3f0fb" stroke="#d8cee9"/><circle cx="105" cy="29" r="5" fill="#9e88c6"/><path d="M120 25H165M120 33H151" stroke="#c5b9dc" stroke-width="3" stroke-linecap="round"/><rect x="11" y="91" width="74" height="28" rx="7" fill="#f0f5fc" stroke="#d0dff0"/><circle cx="26" cy="105" r="4" fill="#80a5d2"/><path d="M38 105H70" stroke="#bdcfe5" stroke-width="3" stroke-linecap="round"/><rect x="185" y="91" width="74" height="28" rx="7" fill="#fbf5ec" stroke="#e8d9c2"/><circle cx="200" cy="105" r="4" fill="#c8a270"/><path d="M212 105H244" stroke="#deceb7" stroke-width="3" stroke-linecap="round"/><circle cx="135" cy="110" r="8" fill="#eef6f2" stroke="#bfd8cd"/></svg></div><div class="welcome-eyebrow">YOUR CODE, IN CONTEXT</div><h1>导入你的项目</h1><p>把文件与能力放在同一张地图上。<br>探索 Skill、工具和代码之间的连接，直接查看来源。</p><div class="dropzone" tabindex="0" role="button" aria-label="选择或拖放项目 ZIP"><div class="dropzone-title"><span aria-hidden="true">↥</span> 拖放项目 ZIP 到这里</div><div class="dropzone-subtitle">在浏览器本地解析 · 无需 API key</div><div class="import-actions"><button class="btn btn-primary" data-action="choose-zip">选择 ZIP</button><button class="btn btn-subtle" data-action="choose-folder">选择文件夹</button></div></div><div class="capabilities"><span class="capability">Python</span><span class="capability">JS / TS</span><span class="capability">Skill</span><span class="capability">MCP 配置</span></div><button class="sample-link" data-action="welcome-demo">先用合成示例探索一下 <span aria-hidden="true">↗</span></button></section>
+        <section class="welcome"><div class="welcome-art" aria-hidden="true"><svg viewBox="0 0 270 130" width="270" height="130"><path d="M135 47V74M135 74H48V92M135 74H222V92M135 74V103" stroke="#cdd9e7" stroke-width="1.5" fill="none"/><rect x="86" y="8" width="98" height="42" rx="9" fill="#f3f0fb" stroke="#d8cee9"/><circle cx="105" cy="29" r="5" fill="#9e88c6"/><path d="M120 25H165M120 33H151" stroke="#c5b9dc" stroke-width="3" stroke-linecap="round"/><rect x="11" y="91" width="74" height="28" rx="7" fill="#f0f5fc" stroke="#d0dff0"/><circle cx="26" cy="105" r="4" fill="#80a5d2"/><path d="M38 105H70" stroke="#bdcfe5" stroke-width="3" stroke-linecap="round"/><rect x="185" y="91" width="74" height="28" rx="7" fill="#fbf5ec" stroke="#e8d9c2"/><circle cx="200" cy="105" r="4" fill="#c8a270"/><path d="M212 105H244" stroke="#deceb7" stroke-width="3" stroke-linecap="round"/><circle cx="135" cy="110" r="8" fill="#eef6f2" stroke="#bfd8cd"/></svg></div><div class="welcome-eyebrow">YOUR CODE, IN CONTEXT</div><h1>导入你的项目</h1><p>把文件与能力放在同一张地图上。<br>探索 Skill、工具和代码之间的连接，直接查看来源。</p><div class="dropzone" tabindex="0" role="button" aria-label="选择或拖放项目 ZIP"><div class="dropzone-title"><span aria-hidden="true">↥</span> 拖放项目 ZIP 到这里</div><div class="dropzone-subtitle">在浏览器本地解析 · 无需 API key</div><div class="import-actions"><button class="btn btn-primary" data-action="choose-zip">选择 ZIP</button><button class="btn btn-subtle" data-action="choose-folder">选择文件夹</button></div></div><button class="btn welcome-github" data-action="connect-github">连接 GitHub 仓库 ↗</button><div class="capabilities"><span class="capability">Python</span><span class="capability">JS / TS</span><span class="capability">Skill</span><span class="capability">MCP 配置</span></div><button class="sample-link" data-action="welcome-demo">先用合成示例探索一下 <span aria-hidden="true">↗</span></button></section>
       </main>
       <aside class="inspector"><div class="inspector-head"><div><div class="inspector-kicker">对象检查器</div><div class="inspector-title">选择一个对象</div></div><button class="btn btn-icon" data-action="close-inspector" aria-label="收起检查器">×</button></div><div class="inspector-tabs"><button data-tab="details" class="active">概览</button><button data-tab="relations">关系</button><button data-tab="source">源码</button></div><div class="inspector-body"></div></aside>
     </div>
     <div class="drawer-scrim hidden"></div>
     <div class="busy-overlay hidden"><div class="busy-card" role="status" aria-live="polite"><div class="busy-spinner"></div><h2 class="busy-title">正在解析项目</h2><p class="busy-message">读取文件…</p><div class="progress-track"><div class="progress-bar"></div></div><button class="btn btn-subtle" data-action="cancel">取消导入</button></div></div>
+    <div class="github-overlay hidden">
+      <section class="github-dialog" role="dialog" aria-modal="true" aria-labelledby="github-dialog-title" aria-describedby="github-dialog-description">
+        <div class="github-dialog-head"><div><div class="github-eyebrow">GITHUB · 公开仓库</div><h2 id="github-dialog-title">连接 GitHub</h2></div><button class="btn btn-icon" data-action="close-github" aria-label="关闭 GitHub 连接">×</button></div>
+        <p id="github-dialog-description">粘贴仓库链接，选择分支后探索项目。</p>
+        <form class="github-form">
+          <label for="github-url">仓库链接</label><input id="github-url" name="repository" type="text" autocomplete="off" spellcheck="false" placeholder="https://github.com/owner/repository" required aria-describedby="github-url-hint">
+          <p id="github-url-hint" class="github-hint">也支持 owner/repository。当前连接公开仓库。</p>
+          <div class="github-branch-field hidden"><div class="github-repo-name"></div><label for="github-branch">选择分支</label><select id="github-branch" name="branch"></select><p class="github-hint">连接后可随时刷新，读取分支的最新版本。</p></div>
+          <p class="github-status hidden" role="status" aria-live="polite"></p><p class="github-error hidden" role="alert"></p>
+          <div class="github-dialog-actions"><button class="btn btn-subtle" type="button" data-action="close-github">取消</button><button class="btn btn-primary github-submit" type="submit">读取仓库</button></div>
+        </form>
+      </section>
+    </div>
     <div class="toast hidden" role="status" aria-live="polite"></div>
     <input class="drop-input sr-only" type="file" accept=".zip,application/zip" data-input="zip" tabindex="-1"><input class="drop-input sr-only" type="file" webkitdirectory directory multiple data-input="folder" tabindex="-1">
   `;
@@ -78,6 +91,7 @@ export function createApp(rootElement, handlers = {}) {
     selectedId: null, view: 'overview', inspectorTab: 'details', evidence: null, relationQuery: '',
     positions: new Map(), graphNodes: [], graphEdges: [], transform: { x: 0, y: 0, k: 1 },
     drag: null, busy: false, lastAction: null, sourceOffset: null, toastTimeout: null,
+    githubInfo: null, githubPending: false, githubController: null, githubGeneration: 0, githubReturnFocus: null,
   };
 
   function toast(message) {
@@ -103,12 +117,12 @@ export function createApp(rootElement, handlers = {}) {
     const value = hasProgress ? Math.max(0, Math.min(100, progress <= 1 ? progress * 100 : progress)) : 35;
     bar.style.width = `${value}%`;
     bar.classList.toggle('indeterminate', !hasProgress);
-    all('[data-action="import"], [data-action="demo"]').forEach(button => { button.disabled = true; });
+    all('[data-action="import"], [data-action="demo"], [data-action="refresh-github"]').forEach(button => { button.disabled = true; });
   }
   function setIdle() {
     state.busy = false;
     find('.busy-overlay').classList.add('hidden');
-    all('[data-action="import"], [data-action="demo"]').forEach(button => { button.disabled = false; });
+    all('[data-action="import"], [data-action="demo"], [data-action="refresh-github"]').forEach(button => { button.disabled = false; });
   }
   function setError(message) {
     setIdle();
@@ -175,7 +189,17 @@ export function createApp(rootElement, handlers = {}) {
     find('.project-name').textContent = asText(project?.meta?.name, '导入的项目');
     find('.project-meta').textContent = `${project?.meta?.isDemo ? '合成示例 · ' : ''}${state.nodes.length} 个对象 · ${(project?.edges || []).length} 条静态关系`;
     find('.demo-badge').classList.toggle('hidden', !project?.meta?.isDemo);
-    find('.project-stats').textContent = `${asText(project?.meta?.llmCalls, 0)} 模型调用 · 当前导入快照`;
+    const cloud = githubSource();
+    const provenance = find('.github-provenance'); provenance.replaceChildren();
+    provenance.classList.toggle('hidden', !cloud);
+    find('.github-refresh').classList.toggle('hidden', !cloud);
+    if (cloud) {
+      const repoLink = element('a', 'github-repo-link', `GitHub · ${cloud.owner}/${cloud.repo}`);
+      repoLink.href = `https://github.com/${encodeURIComponent(cloud.owner)}/${encodeURIComponent(cloud.repo)}`;
+      repoLink.target = '_blank'; repoLink.rel = 'noopener noreferrer';
+      provenance.append(repoLink, element('span', 'github-revision', `${cloud.branch} · ${cloud.commit.slice(0, 7)}`));
+    }
+    find('.project-stats').textContent = `${asText(project?.meta?.llmCalls, 0)} 模型调用 · ${cloud ? 'GitHub 快照 · 手动刷新' : '当前导入快照'}`;
     const notes = find('.notes-content'); notes.replaceChildren();
     for (const note of project?.meta?.notes || []) notes.append(element('p', '', note));
     if (!notes.childElementCount) notes.append(element('p', '', '关系来自本地静态分析与源文件声明；不表示运行时调用。'));
@@ -373,6 +397,20 @@ export function createApp(rootElement, handlers = {}) {
     if (event.key === '0') { event.preventDefault(); fitCanvas(); }
   });
 
+  function githubSource() {
+    const source = state.project?.meta?.source;
+    if (source?.type !== 'github' || !/^[A-Za-z0-9-]+$/.test(source.owner || '') || !/^[A-Za-z0-9_.-]+$/.test(source.repo || '') || !/^[a-f0-9]{40}$/i.test(source.commit || '')) return null;
+    return source;
+  }
+  function appendGitHubSourceLink(container, source) {
+    const cloud = githubSource(), path = source?.path;
+    if (!cloud || typeof path !== 'string' || !path || path.startsWith('/') || path.split('/').some(part => part === '..' || part === '.')) return;
+    const line = Number.isInteger(Number(source.line)) && Number(source.line) > 0 ? Number(source.line) : 1;
+    const link = element('a', 'btn btn-subtle github-source-link', '在 GitHub 查看 ↗');
+    link.href = `https://github.com/${encodeURIComponent(cloud.owner)}/${encodeURIComponent(cloud.repo)}/blob/${cloud.commit}/${path.split('/').map(encodeURIComponent).join('/')}#L${line}`;
+    link.target = '_blank'; link.rel = 'noopener noreferrer';
+    container.append(link);
+  }
   function sectionLabel(container, label) { container.append(element('div', 'section-label', label)); }
   function renderInspector() {
     const node = state.nodeMap.get(state.selectedId); const body = refs.inspectorBody; body.replaceChildren();
@@ -403,7 +441,7 @@ export function createApp(rootElement, handlers = {}) {
     else container.append(element('p', 'detail-description muted', '定位源文件后，可在你自己的编辑器中继续修改。'));
     sectionLabel(container, '源文件'); container.append(element('div', 'source-location', locationOf(sourceOf(node))));
     const tools = element('div', 'source-toolbar');
-    tools.append(action('查看源码 ↗', 'btn btn-primary', () => setInspectorTab('source')), action('复制路径', 'btn btn-subtle', () => copyText(locationOf(sourceOf(node))))); container.append(tools);
+    tools.append(action('查看源码 ↗', 'btn btn-primary', () => setInspectorTab('source')), action('复制路径', 'btn btn-subtle', () => copyText(locationOf(sourceOf(node))))); appendGitHubSourceLink(tools, sourceOf(node)); container.append(tools);
     if (Array.isArray(node.sources) && node.sources.length > 1) {
       sectionLabel(container, '其他来源'); for (const source of node.sources.slice(0, 12)) {
         if (source.path === sourceOf(node).path && source.line === sourceOf(node).line) continue;
@@ -460,6 +498,7 @@ export function createApp(rootElement, handlers = {}) {
     }
     container.append(element('div', 'source-location', locationOf(source)));
     const toolbar = element('div', 'source-toolbar'); toolbar.append(action('复制相对路径:行', 'btn btn-subtle', () => copyText(locationOf(source))));
+    appendGitHubSourceLink(toolbar, source);
     if (evidence) toolbar.append(action('对象定义', 'btn btn-subtle', () => { state.evidence = null; state.sourceOffset = null; renderInspector(); }));
     container.append(toolbar);
     const files = state.project?.files || {};
@@ -480,7 +519,7 @@ export function createApp(rootElement, handlers = {}) {
       const next = action('后 120 行 →', 'btn btn-subtle', () => { state.sourceOffset = Math.min(lines.length - 1, offset + 120); renderInspector(); }); next.disabled = end >= lines.length;
       pagination.append(prev, target, next); container.append(pagination);
     }
-    container.append(element('p', 'inspector-note', '蓝色行标记所选对象或证据的位置。内容来自当前导入快照。'));
+    container.append(element('p', 'inspector-note', `蓝色行标记所选对象或证据的位置。内容来自当前${githubSource() ? ' GitHub ' : '导入'}快照。`));
   }
   async function copyText(value) {
     if (!value || value === '未记录源位置') { toast('这个对象没有记录源文件位置。'); return; }
@@ -505,7 +544,86 @@ export function createApp(rootElement, handlers = {}) {
   function closeImportMenu() { find('.import-menu').classList.add('hidden'); find('[data-action="import"]').setAttribute('aria-expanded', 'false'); }
   function chooseZip() { closeImportMenu(); if (!state.busy) refs.zipInput.click(); }
   function chooseFolder() { closeImportMenu(); if (!state.busy) refs.folderInput.click(); }
+  function resetGitHubInspection() {
+    state.githubController?.abort(); state.githubController = null;
+    state.githubGeneration++; state.githubPending = false; state.githubInfo = null;
+    find('.github-form').removeAttribute('aria-busy');
+    find('.github-submit').disabled = false; find('.github-submit').textContent = '读取仓库';
+    find('.github-branch-field').classList.add('hidden');
+    find('.github-status').classList.add('hidden'); find('.github-error').classList.add('hidden');
+    find('#github-branch').replaceChildren();
+  }
+  function setDialogBackgroundInert(inert) {
+    for (const child of shell.children) if (!child.classList.contains('github-overlay')) child.inert = inert;
+  }
+  function openGitHub(event) {
+    if (state.busy) return;
+    const trigger = event?.currentTarget || document.activeElement;
+    state.githubReturnFocus = trigger?.closest('.import-menu') ? find('[data-action="import"]') : trigger;
+    closeImportMenu(); resetGitHubInspection();
+    find('.github-overlay').classList.remove('hidden'); setDialogBackgroundInert(true);
+    const input = find('#github-url');
+    if (!input.value && githubSource()) input.value = `https://github.com/${githubSource().owner}/${githubSource().repo}`;
+    input.focus();
+  }
+  function closeGitHub() {
+    resetGitHubInspection(); find('.github-overlay').classList.add('hidden'); setDialogBackgroundInert(false);
+    const trigger = state.githubReturnFocus;
+    if (trigger?.isConnected) trigger.focus(); else find('[data-action="import"]').focus();
+  }
+  async function submitGitHub(event) {
+    event.preventDefault();
+    if (state.busy || state.githubPending || find('.github-overlay').classList.contains('hidden')) return;
+    if (state.githubInfo) {
+      const { owner, repo } = state.githubInfo, branch = find('#github-branch').value;
+      if (!branch) return;
+      closeGitHub(); void invoke('onGitHubConnect', { owner, repo, branch }); return;
+    }
+    const url = find('#github-url').value.trim();
+    const errorBox = find('.github-error'); errorBox.classList.add('hidden');
+    if (!url) { errorBox.textContent = '请输入公开 GitHub 仓库链接。'; errorBox.classList.remove('hidden'); find('#github-url').focus(); return; }
+    const generation = ++state.githubGeneration, controller = new AbortController();
+    state.githubController = controller; state.githubPending = true;
+    find('.github-form').setAttribute('aria-busy', 'true');
+    find('.github-submit').disabled = true; find('.github-submit').textContent = '正在读取…';
+    const status = find('.github-status'); status.textContent = '正在读取仓库和分支…'; status.classList.remove('hidden');
+    try {
+      const info = await handlers.onGitHubInspect?.(url, { signal: controller.signal });
+      if (controller.signal.aborted || generation !== state.githubGeneration) return;
+      if (!info?.owner || !info?.repo || !info?.defaultBranch) throw new Error('未能读取仓库，请稍后重试。');
+      const branches = [...new Set([info.defaultBranch, ...(info.branches || [])])].filter(branch => typeof branch === 'string' && branch);
+      state.githubInfo = info;
+      find('.github-repo-name').textContent = info.fullName || `${info.owner}/${info.repo}`;
+      const select = find('#github-branch'); select.replaceChildren();
+      for (const branch of branches) { const option = element('option', '', branch); option.value = branch; select.append(option); }
+      select.value = info.defaultBranch;
+      find('.github-branch-field').classList.remove('hidden');
+      status.textContent = '仓库已找到，选择分支后连接。';
+      find('.github-submit').textContent = '连接仓库'; select.focus();
+    } catch (error) {
+      if (controller.signal.aborted || generation !== state.githubGeneration) return;
+      errorBox.textContent = error?.message || '读取仓库失败，请检查链接后重试。'; errorBox.classList.remove('hidden');
+      status.classList.add('hidden'); find('.github-submit').textContent = '读取仓库';
+    } finally {
+      if (generation === state.githubGeneration) {
+        state.githubPending = false; state.githubController = null;
+        find('.github-form').removeAttribute('aria-busy'); find('.github-submit').disabled = false;
+      }
+    }
+  }
   function bind(name, fn) { all(`[data-action="${name}"]`).forEach(btn => btn.addEventListener('click', fn)); }
+  bind('connect-github', openGitHub); bind('close-github', closeGitHub);
+  bind('refresh-github', () => invoke('onGitHubRefresh'));
+  find('#github-url').addEventListener('input', resetGitHubInspection);
+  find('.github-form').addEventListener('submit', submitGitHub);
+  find('.github-overlay').addEventListener('click', event => { if (event.target === find('.github-overlay')) closeGitHub(); });
+  find('.github-dialog').addEventListener('keydown', event => {
+    if (event.key !== 'Tab') return;
+    const focusable = Array.from(find('.github-dialog').querySelectorAll('button, input, select, a[href], [tabindex="0"]')).filter(node => !node.disabled && !node.closest('.hidden'));
+    const first = focusable[0], last = focusable.at(-1);
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+  });
   bind('import', event => { event.stopPropagation(); const menu = find('.import-menu'); menu.classList.toggle('hidden'); find('[data-action="import"]').setAttribute('aria-expanded', String(!menu.classList.contains('hidden'))); });
   shell.addEventListener('click', event => { if (!event.target.closest('.import-menu, [data-action="import"]')) closeImportMenu(); }); bind('choose-zip', event => { event.stopPropagation(); chooseZip(); }); bind('choose-folder', event => { event.stopPropagation(); chooseFolder(); });
   bind('demo', () => invoke('onDemo')); bind('welcome-demo', () => invoke('onDemo'));
@@ -536,6 +654,10 @@ export function createApp(rootElement, handlers = {}) {
   const observer = typeof ResizeObserver === 'function' ? new ResizeObserver(() => { clearTimeout(resizeTimer); resizeTimer = setTimeout(() => { if (state.project && !state.drag) applyTransform(); updateScrim(); }, 80); }) : null;
   observer?.observe(refs.viewport);
   window.addEventListener('keydown', event => {
+    if (!find('.github-overlay').classList.contains('hidden')) {
+      if (event.key === 'Escape') { event.preventDefault(); closeGitHub(); }
+      return;
+    }
     if (event.key === 'Escape') { shell.classList.remove('sidebar-open', 'inspector-open'); closeImportMenu(); updateScrim(); }
     if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k' && state.project) { event.preventDefault(); shell.classList.add('sidebar-open'); shell.classList.remove('inspector-open'); updateScrim(); refs.search.focus(); }
   });
