@@ -12,11 +12,11 @@ Connect a public GitHub repository, or import a project folder or ZIP. Parsing r
 
 ## Watch the walkthrough
 
-**English · 96 seconds · 1080p.** Import a project, follow a Skill to its tool and source line, then connect directly to a GitHub repository. English titles and guidance accompany real recordings of the v0.2 Chinese interface, with music and no narration.
+**English · 108 seconds · 1080p.** Explore the new sample map, import a project, follow a Skill to its source, and connect GitHub. Recorded in the v0.3 **English interface** with English synthetic source text, including a live language switch that preserves the selected source. English guidance and original music; no narration.
 
-https://github.com/user-attachments/assets/7801e032-a8e9-4176-af01-445ecaa39572
+https://github.com/user-attachments/assets/34698cbd-12a3-4acb-b199-e94fe6db4f25
 
-[English MP4](https://github.com/WItaZhang/project-map/releases/download/v0.2.0/project-map-walkthrough-en.mp4) · [中文视频](README.zh-CN.md#观看完整演示) · [中文 MP4](https://github.com/WItaZhang/project-map/releases/download/v0.2.0/project-map-walkthrough-zh.mp4) · [Editable video project](video/README.md)
+[English MP4](https://github.com/WItaZhang/project-map/releases/download/v0.3.0/project-map-walkthrough-en.mp4) · [中文视频](README.zh-CN.md#观看完整演示) · [中文 MP4](https://github.com/WItaZhang/project-map/releases/download/v0.3.0/project-map-walkthrough-zh.mp4) · [Editable video project](video/README.md)
 
 <details>
 <summary>Short animated preview</summary>

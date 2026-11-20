@@ -17,7 +17,7 @@ const excerpt=(id,startOffset,endOffset)=>{
  if(!shot)throw new Error(`Missing teaser scene: ${id}`);
  return [shot.start+Math.min(startOffset,shot.duration-.1),shot.start+Math.min(endOffset,shot.duration)];
 };
-const segments=[excerpt('hook',2,5),excerpt('evidence',3.8,6.2),excerpt('source',5.5,8.8),excerpt('end',3,6)];
+const segments=[excerpt('welcome',.3,3.5),excerpt('source',5.5,8.8),excerpt('language',.5,3.6),excerpt('end',3,6)];
 const trims = segments.map(([start, end], i) =>
   `[0:v]trim=start=${start}:end=${end},setpts=PTS-STARTPTS[v${i}]`
 );

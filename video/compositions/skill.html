@@ -4,17 +4,17 @@
 #skill-viewport{position:absolute;inset:0 0 auto;height:820px;overflow:hidden;background:#f6f8fc}
 #skill-camera{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0}
 #skill-camera img,#skill-camera video{position:absolute;left:0;top:0;width:1920px;height:1080px;object-fit:fill}
-#skill-still{z-index:1}#skill-recording{z-index:3}#import-before{z-index:4}
+#skill-still{z-index:1}#skill-recording{z-index:3}#skill-before{z-index:4}
 </style>
 <div id="root" data-composition-id="skill" data-width="1920" data-height="1080">
 <div id="skill-viewport" data-layout-allow-overflow="true"><div id="skill-camera">
-<img id="skill-still" class="clip" data-start="0" data-duration="6" data-track-index="0" src="assets/screens/04-skill.png" alt="Actual synthetic Career Agent product state" /><video id="skill-recording" class="clip" data-start="0" data-duration="2.935" data-track-index="1" src="assets/clips/skill.mp4" muted playsinline preload="auto"></video>
+<img id="skill-still" class="clip" data-start="0" data-duration="6" data-track-index="0" src="assets/screens/zh/04-skill.png" alt="Actual synthetic Career Agent product state" /><video id="skill-recording" class="clip" data-start="0" data-duration="1.933" data-track-index="1" src="assets/clips/zh/skill.mp4" muted playsinline preload="auto"></video>
 </div></div>
 </div>
 <script>
 const tl=gsap.timeline({paused:true});
 tl.set('#skill-camera',{"x":230.4,"y":0,"scale":0.7592592592592593},0);
-tl.to('#skill-camera',{...{"x":-3889.5999999999995,"y":-388,"scale":2.8},duration:0.6,ease:'power2.inOut'},3.055);
+tl.to('#skill-camera',{...{"x":-3889.5999999999995,"y":-388,"scale":2.8},duration:0.6,ease:'power2.inOut'},2.053);
 window.__timelines['skill']=tl;
 </script>
 </template>

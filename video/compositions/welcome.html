@@ -1,0 +1,20 @@
+<template>
+<style>
+#root{position:absolute;inset:0;background:#f6f8fc;overflow:hidden}
+#welcome-viewport{position:absolute;inset:0 0 auto;height:820px;overflow:hidden;background:#f6f8fc}
+#welcome-camera{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0}
+#welcome-camera img,#welcome-camera video{position:absolute;left:0;top:0;width:1920px;height:1080px;object-fit:fill}
+#welcome-still{z-index:1}#welcome-recording{z-index:3}#welcome-before{z-index:4}
+</style>
+<div id="root" data-composition-id="welcome" data-width="1920" data-height="1080">
+<div id="welcome-viewport" data-layout-allow-overflow="true"><div id="welcome-camera">
+<img id="welcome-still" class="clip" data-start="0" data-duration="6" data-track-index="0" src="assets/screens/zh/00-preview.png" alt="Actual synthetic Career Agent product state" /><video id="welcome-recording" class="clip" data-start="1.2" data-duration="2.400" data-track-index="1" src="assets/clips/zh/welcome.mp4" muted playsinline preload="auto"></video><img id="welcome-before" class="clip" data-start="0" data-duration="1.2" data-track-index="1" src="assets/screens/zh/01-welcome.png" alt="Actual project welcome screen" />
+</div></div>
+</div>
+<script>
+const tl=gsap.timeline({paused:true});
+tl.set('#welcome-camera',{"x":-480,"y":-445,"scale":1.5},0);
+tl.to('#welcome-camera',{...{"x":-3889.5999999999995,"y":-388,"scale":2.8},duration:0.6,ease:'power2.inOut'},2.150);
+window.__timelines['welcome']=tl;
+</script>
+</template>

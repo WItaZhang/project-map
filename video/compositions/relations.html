@@ -4,17 +4,17 @@
 #relations-viewport{position:absolute;inset:0 0 auto;height:820px;overflow:hidden;background:#f6f8fc}
 #relations-camera{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0}
 #relations-camera img,#relations-camera video{position:absolute;left:0;top:0;width:1920px;height:1080px;object-fit:fill}
-#relations-still{z-index:1}#relations-recording{z-index:3}#import-before{z-index:4}
+#relations-still{z-index:1}#relations-recording{z-index:3}#relations-before{z-index:4}
 </style>
 <div id="root" data-composition-id="relations" data-width="1920" data-height="1080">
 <div id="relations-viewport" data-layout-allow-overflow="true"><div id="relations-camera">
-<img id="relations-still" class="clip" data-start="0" data-duration="7" data-track-index="0" src="assets/screens/05-relations.png" alt="Actual synthetic Career Agent product state" /><video id="relations-recording" class="clip" data-start="0" data-duration="3.033" data-track-index="1" src="assets/clips/relations.mp4" muted playsinline preload="auto"></video>
+<img id="relations-still" class="clip" data-start="0" data-duration="7" data-track-index="0" src="assets/screens/zh/05-relations.png" alt="Actual synthetic Career Agent product state" /><video id="relations-recording" class="clip" data-start="0" data-duration="2.000" data-track-index="1" src="assets/clips/zh/relations.mp4" muted playsinline preload="auto"></video>
 </div></div>
 </div>
 <script>
 const tl=gsap.timeline({paused:true});
 tl.set('#relations-camera',{"x":230.4,"y":0,"scale":0.7592592592592593},0);
-tl.to('#relations-camera',{...{"x":-4245,"y":-496,"scale":3},duration:0.6,ease:'power2.inOut'},3.153);
+tl.to('#relations-camera',{...{"x":-4245,"y":-496,"scale":3},duration:0.6,ease:'power2.inOut'},2.120);
 window.__timelines['relations']=tl;
 </script>
 </template>

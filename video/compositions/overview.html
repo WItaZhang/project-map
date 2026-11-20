@@ -4,17 +4,17 @@
 #overview-viewport{position:absolute;inset:0 0 auto;height:820px;overflow:hidden;background:#f6f8fc}
 #overview-camera{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0}
 #overview-camera img,#overview-camera video{position:absolute;left:0;top:0;width:1920px;height:1080px;object-fit:fill}
-#overview-still{z-index:1}#overview-recording{z-index:3}#import-before{z-index:4}
+#overview-still{z-index:1}#overview-recording{z-index:3}#overview-before{z-index:4}
 </style>
 <div id="root" data-composition-id="overview" data-width="1920" data-height="1080">
 <div id="overview-viewport" data-layout-allow-overflow="true"><div id="overview-camera">
-<img id="overview-still" class="clip" data-start="0" data-duration="7" data-track-index="0" src="assets/screens/03-overview.png" alt="Actual synthetic Career Agent product state" /><video id="overview-recording" class="clip" data-start="0" data-duration="4.209" data-track-index="1" src="assets/clips/overview.mp4" muted playsinline preload="auto"></video>
+<img id="overview-still" class="clip" data-start="0" data-duration="7" data-track-index="0" src="assets/screens/zh/03-overview.png" alt="Actual synthetic Career Agent product state" /><video id="overview-recording" class="clip" data-start="0" data-duration="2.467" data-track-index="1" src="assets/clips/zh/overview.mp4" muted playsinline preload="auto"></video>
 </div></div>
 </div>
 <script>
 const tl=gsap.timeline({paused:true});
 tl.set('#overview-camera',{"x":230.4,"y":0,"scale":0.7592592592592593},0);
-tl.to('#overview-camera',{...{"x":-102,"y":-244.89999999999998,"scale":1.18},duration:0.6,ease:'power2.inOut'},4.329);
+tl.to('#overview-camera',{...{"x":-102,"y":-244.89999999999998,"scale":1.18},duration:0.6,ease:'power2.inOut'},2.587);
 window.__timelines['overview']=tl;
 </script>
 </template>

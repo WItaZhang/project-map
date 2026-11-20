@@ -4,17 +4,17 @@
 #mcp-viewport{position:absolute;inset:0 0 auto;height:820px;overflow:hidden;background:#f6f8fc}
 #mcp-camera{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0}
 #mcp-camera img,#mcp-camera video{position:absolute;left:0;top:0;width:1920px;height:1080px;object-fit:fill}
-#mcp-still{z-index:1}#mcp-recording{z-index:3}#import-before{z-index:4}
+#mcp-still{z-index:1}#mcp-recording{z-index:3}#mcp-before{z-index:4}
 </style>
 <div id="root" data-composition-id="mcp" data-width="1920" data-height="1080">
 <div id="mcp-viewport" data-layout-allow-overflow="true"><div id="mcp-camera">
-<img id="mcp-still" class="clip" data-start="0" data-duration="7" data-track-index="0" src="assets/screens/10-mcp.png" alt="Actual synthetic Career Agent product state" /><video id="mcp-recording" class="clip" data-start="0" data-duration="3.334" data-track-index="1" src="assets/clips/mcp.mp4" muted playsinline preload="auto"></video>
+<img id="mcp-still" class="clip" data-start="0" data-duration="7" data-track-index="0" src="assets/screens/zh/10-mcp.png" alt="Actual synthetic Career Agent product state" /><video id="mcp-recording" class="clip" data-start="0" data-duration="2.233" data-track-index="1" src="assets/clips/zh/mcp.mp4" muted playsinline preload="auto"></video>
 </div></div>
 </div>
 <script>
 const tl=gsap.timeline({paused:true});
 tl.set('#mcp-camera',{"x":230.4,"y":0,"scale":0.7592592592592593},0);
-tl.to('#mcp-camera',{...{"x":-3898,"y":-472,"scale":2.8},duration:0.6,ease:'power2.inOut'},3.454);
+tl.to('#mcp-camera',{...{"x":-3898,"y":-472,"scale":2.8},duration:0.6,ease:'power2.inOut'},2.353);
 window.__timelines['mcp']=tl;
 </script>
 </template>

@@ -2,7 +2,7 @@
 
 These assets are original, locally synthesized audio authored for Project Map:
 
-- `music.m4a` (distributed AAC copy) and `music.wav` (regenerated master): 96 seconds, 100 BPM, 4/4, 40 bars; warm harmonic pads, rounded plucks, and quiet noise percussion.
+- `music.m4a` (distributed AAC copy) and `music.wav` (regenerated master): 108 seconds, 100 BPM, 4/4, 45 bars; warm harmonic pads, rounded plucks, and quiet noise percussion.
 - `click-soft.wav`: 80 ms filtered-noise interface click.
 - `click-deep.wav`: 105 ms lower filtered-noise interface click.
 

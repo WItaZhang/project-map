@@ -4,17 +4,17 @@
 #evidence-viewport{position:absolute;inset:0 0 auto;height:820px;overflow:hidden;background:#f6f8fc}
 #evidence-camera{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0}
 #evidence-camera img,#evidence-camera video{position:absolute;left:0;top:0;width:1920px;height:1080px;object-fit:fill}
-#evidence-still{z-index:1}#evidence-recording{z-index:3}#import-before{z-index:4}
+#evidence-still{z-index:1}#evidence-recording{z-index:3}#evidence-before{z-index:4}
 </style>
 <div id="root" data-composition-id="evidence" data-width="1920" data-height="1080">
 <div id="evidence-viewport" data-layout-allow-overflow="true"><div id="evidence-camera">
-<img id="evidence-still" class="clip" data-start="0" data-duration="8" data-track-index="0" src="assets/screens/06-evidence.png" alt="Actual synthetic Career Agent product state" /><video id="evidence-recording" class="clip" data-start="0" data-duration="3.195" data-track-index="1" src="assets/clips/evidence.mp4" muted playsinline preload="auto"></video>
+<img id="evidence-still" class="clip" data-start="0" data-duration="8" data-track-index="0" src="assets/screens/zh/06-evidence.png" alt="Actual synthetic Career Agent product state" /><video id="evidence-recording" class="clip" data-start="0" data-duration="2.033" data-track-index="1" src="assets/clips/zh/evidence.mp4" muted playsinline preload="auto"></video>
 </div></div>
 </div>
 <script>
 const tl=gsap.timeline({paused:true});
 tl.set('#evidence-camera',{"x":230.4,"y":0,"scale":0.7592592592592593},0);
-tl.to('#evidence-camera',{...{"x":-4592,"y":-582,"scale":3.2},duration:0.6,ease:'power2.inOut'},3.315);
+tl.to('#evidence-camera',{...{"x":-4592,"y":-582,"scale":3.2},duration:0.6,ease:'power2.inOut'},2.153);
 tl.to('#evidence-camera',{...{"x":-4592,"y":-1558,"scale":3.2},duration:0.65,ease:'power2.inOut'},6.15);
 window.__timelines['evidence']=tl;
 </script>

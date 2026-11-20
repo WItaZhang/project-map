@@ -4,61 +4,71 @@ A growing project. Where do you start?
 Trace a capability to its implementation.
 
 2
-00:00:06,000 --> 00:00:14,000
+00:00:06,000 --> 00:00:12,000
+Your project, or a quick demo
+GitHub · ZIP · Folder
+
+3
+00:00:12,000 --> 00:00:20,000
 Import your project
 ZIP or folder. Parsed locally in your browser.
 
-3
-00:00:14,000 --> 00:00:21,000
+4
+00:00:20,000 --> 00:00:27,000
 See what's in your project
 Skills · Agents · Tools · MCP · Modules · Config
 
-4
-00:00:21,000 --> 00:00:27,000
+5
+00:00:27,000 --> 00:00:33,000
 Start with a Skill
 Select discover-jobs to read its original description.
 
-5
-00:00:27,000 --> 00:00:34,000
+6
+00:00:33,000 --> 00:00:40,000
 Follow the link to a tool
 Inspect the link from discover-jobs to search_jobs.
 
-6
-00:00:34,000 --> 00:00:42,000
-Check where each link comes from
-Text references include a source; they aren't runtime traces.
-
 7
-00:00:42,000 --> 00:00:48,000
-Find a tool by name
-Search names, descriptions, or paths. Filter by type.
+00:00:40,000 --> 00:00:48,000
+Check where each link comes from
+Open the evidence in the original Skill.
 
 8
 00:00:48,000 --> 00:00:54,000
+Find a tool by name
+Search names, descriptions, or paths. Filter by type.
+
+9
+00:00:54,000 --> 00:01:00,000
 Descriptions straight from source
 Original metadata and docstrings. Zero LLM calls.
 
-9
-00:00:54,000 --> 00:01:03,000
+10
+00:01:00,000 --> 00:01:09,000
 Find the line to change
 src/server.py:8 · Copy the relative path and line.
 
-10
-00:01:03,000 --> 00:01:10,000
-Locate servers and configuration
-Inspect declarations without connecting to MCP.
-
 11
-00:01:10,000 --> 00:01:16,000
-Edit, then reimport
-Make changes in your editor. The map is read-only.
+00:01:09,000 --> 00:01:16,000
+Locate servers and configuration
+Find connection settings and source instances.
 
 12
-00:01:16,000 --> 00:01:28,000
+00:01:16,000 --> 00:01:22,000
+Reimport and keep exploring
+Edit in your editor. Find your way in the map.
+
+13
+00:01:22,000 --> 00:01:34,000
 Connect directly to GitHub
 Choose a branch. Read a commit. Refresh from GitHub.
 
-13
-00:01:28,000 --> 00:01:36,000
+14
+00:01:34,000 --> 00:01:40,000
+Switch languages. Stay in place.
+Keep your selection, source line, and map view.
+
+15
+00:01:40,000 --> 00:01:48,000
 Project Map
 github.com/WItaZhang/project-map

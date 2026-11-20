@@ -1,12 +1,25 @@
 {
-  "release": "v0.2.0",
-  "durationSeconds": 96,
+  "release": "v0.3.0",
+  "durationSeconds": 108,
+  "appRevision": "d1a4e728bcdc1931b8e91b8721a568f431bd0f4d",
   "readmeVideos": {
-    "en": "https://github.com/user-attachments/assets/7801e032-a8e9-4176-af01-445ecaa39572",
-    "zh": "https://github.com/user-attachments/assets/29cd2997-e29a-428d-8846-53f38b90006f"
+    "en": "https://github.com/user-attachments/assets/34698cbd-12a3-4acb-b199-e94fe6db4f25",
+    "zh": "https://github.com/user-attachments/assets/be20986b-0f6f-4c2b-9f30-5de3bb53abf5"
   },
   "downloads": {
-    "en": "https://github.com/WItaZhang/project-map/releases/download/v0.2.0/project-map-walkthrough-en.mp4",
-    "zh": "https://github.com/WItaZhang/project-map/releases/download/v0.2.0/project-map-walkthrough-zh.mp4"
+    "en": "https://github.com/WItaZhang/project-map/releases/download/v0.3.0/project-map-walkthrough-en.mp4",
+    "zh": "https://github.com/WItaZhang/project-map/releases/download/v0.3.0/project-map-walkthrough-zh.mp4"
+  },
+  "sha256": {
+    "en": {
+      "download": "3daef7d5fbb2c6bfe0ccf48b41480bcbf8b99ad6f1d34c0b0b7d4af2b7aaa5e2",
+      "readme": "be45cc9ba648c1b7f75c0480223ee54ffcd65d35c517256f8134b65c2bf200bc",
+      "teaser": "3429d6a689a141499cf0c197de781dcdb902a0be735f04cf2d32c84ca0f2327a"
+    },
+    "zh": {
+      "download": "3470c91ba576158d00e0e93076a78f4d7f0b29f0d11b0e75753d3e69b06cc06e",
+      "readme": "641d4147023234b221e7345875f72a71415049bf2cbc274d2baaac887c510944",
+      "teaser": "41b9dd6f73aee565802ca2654ad1ffb9a881d480ca17317ee1e4c3f869a58600"
+    }
   }
 }

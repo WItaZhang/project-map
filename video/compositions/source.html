@@ -4,17 +4,17 @@
 #source-viewport{position:absolute;inset:0 0 auto;height:820px;overflow:hidden;background:#f6f8fc}
 #source-camera{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0}
 #source-camera img,#source-camera video{position:absolute;left:0;top:0;width:1920px;height:1080px;object-fit:fill}
-#source-still{z-index:1}#source-recording{z-index:3}#import-before{z-index:4}
+#source-still{z-index:1}#source-recording{z-index:3}#source-before{z-index:4}
 </style>
 <div id="root" data-composition-id="source" data-width="1920" data-height="1080">
 <div id="source-viewport" data-layout-allow-overflow="true"><div id="source-camera">
-<img id="source-still" class="clip" data-start="0" data-duration="9" data-track-index="0" src="assets/screens/09-source.png" alt="Actual synthetic Career Agent product state" /><video id="source-recording" class="clip" data-start="0" data-duration="3.242" data-track-index="1" src="assets/clips/source.mp4" muted playsinline preload="auto"></video>
+<img id="source-still" class="clip" data-start="0" data-duration="9" data-track-index="0" src="assets/screens/zh/09-source.png" alt="Actual synthetic Career Agent product state" /><video id="source-recording" class="clip" data-start="0" data-duration="2.233" data-track-index="1" src="assets/clips/zh/source.mp4" muted playsinline preload="auto"></video>
 </div></div>
 </div>
 <script>
 const tl=gsap.timeline({paused:true});
 tl.set('#source-camera',{"x":230.4,"y":0,"scale":0.7592592592592593},0);
-tl.to('#source-camera',{...{"x":-3870,"y":-276,"scale":2.8},duration:0.6,ease:'power2.inOut'},3.362);
+tl.to('#source-camera',{...{"x":-3870,"y":-276,"scale":2.8},duration:0.6,ease:'power2.inOut'},2.353);
 tl.to('#source-camera',{...{"x":-4245,"y":-985,"scale":3},duration:0.65,ease:'power2.inOut'},5.25);
 window.__timelines['source']=tl;
 </script>

@@ -12,11 +12,11 @@ Skill、Agent、工具、MCP 配置和实现代码往往散落在仓库各处。
 
 ## 观看完整演示
 
-**中文版 · 96 秒 · 1080p。** 从导入项目、查看 Skill 和工具的关系、定位源码，到直接连接 GitHub 仓库，展示真实操作全流程。基于 v0.2 界面录制，配有中文屏幕说明和音乐，无旁白。
+**中文版 · 108 秒 · 1080p。** 从新版首页的示例地图、导入项目、沿关系定位源码，到连接 GitHub，展示完整操作流程。使用 v0.3 **中文界面**和中文合成示例录制，并演示切换语言后保留选中源码。配有中文屏幕说明和原创音乐，无旁白。
 
-https://github.com/user-attachments/assets/29cd2997-e29a-428d-8846-53f38b90006f
+https://github.com/user-attachments/assets/be20986b-0f6f-4c2b-9f30-5de3bb53abf5
 
-[下载中文 MP4](https://github.com/WItaZhang/project-map/releases/download/v0.2.0/project-map-walkthrough-zh.mp4) · [English video](README.md#watch-the-walkthrough) · [下载英文 MP4](https://github.com/WItaZhang/project-map/releases/download/v0.2.0/project-map-walkthrough-en.mp4) · [可编辑视频工程](video/README.md)
+[下载中文 MP4](https://github.com/WItaZhang/project-map/releases/download/v0.3.0/project-map-walkthrough-zh.mp4) · [English video](README.md#watch-the-walkthrough) · [下载英文 MP4](https://github.com/WItaZhang/project-map/releases/download/v0.3.0/project-map-walkthrough-en.mp4) · [可编辑视频工程](video/README.md)
 
 <details>
 <summary>查看动图预览</summary>

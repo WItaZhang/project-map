@@ -2,7 +2,7 @@
 """Generate original deterministic Project Map music and UI clicks (stdlib only).
 
 No recordings, samples, speech, network, or third-party synthesis libraries.
-100 BPM, 4/4, 40 bars = 96 seconds. All waveforms are authored here.
+100 BPM, 4/4, 45 bars = 108 seconds. All waveforms are authored here.
 """
 from array import array
 from pathlib import Path
@@ -15,7 +15,7 @@ SR = 48_000
 BPM = 100
 BEAT = 60 / BPM
 BAR = 4 * BEAT
-BARS = 40
+BARS = 45
 DURATION = BARS * BAR
 N = round(SR * DURATION)
 OUT = Path(__file__).resolve().parents[1] / 'assets' / 'audio'
