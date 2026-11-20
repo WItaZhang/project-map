@@ -12,7 +12,7 @@ Connect a public GitHub repository, or import a project folder or ZIP. Parsing r
 
 ## Watch the walkthrough
 
-**English · 108 seconds · 1080p.** Explore the new sample map, import a project, follow a Skill to its source, and connect GitHub. Recorded in the v0.3 **English interface** with English synthetic source text, including a live language switch that preserves the selected source. English guidance and original music; no narration.
+Import a project or connect GitHub, then follow Skills and tools to their source code.
 
 https://github.com/user-attachments/assets/34698cbd-12a3-4acb-b199-e94fe6db4f25
 
